@@ -18,5 +18,5 @@
 
 **Only /dist folder and node dependencies are included in the executable.**
 
-[build-badge]: https://travis-ci.org/
-[build]: https://travis-ci.org/
+[build-badge]: https://travis-ci.com/Desmoswal/mttcsp-corp.svg?token=xR4yhCAPS66ndPhzDz1e&branch=master
+[build]: https://travis-ci.com/github/Desmoswal/mttcsp-corp
