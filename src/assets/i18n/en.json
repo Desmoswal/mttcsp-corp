@@ -1,7 +1,9 @@
 {
   "PAGES": {
       "HOME": {
-          "TITLE": "App works !"
+          "TITLE": "App works !",
+          "TEXT": "Does it?",
+          "T2": "It really does."
       }
   }
 }
