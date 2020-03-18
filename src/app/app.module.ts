@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -26,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    NgbModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

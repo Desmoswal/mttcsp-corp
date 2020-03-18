@@ -16,7 +16,7 @@ describe('angular-electron App', function () {
 
   it('should display message saying App works !', async function () {
     const text = await browser.getText('app-home h1');
-    expect(text).to.equal('App works !');
+    expect(text).to.contain('App works !');
   });
 
   it('creates initial windows', async function () {
