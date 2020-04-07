@@ -1,0 +1,67 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+li {
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menu-icon {
+  margin: 0px 10px 5px 20px;
+  align-self: center;
+}
+
+.user-icon {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.searchbar {
+  margin-left: 20px;
+  width: 500px;
+}
+
+.namerole{
+  text-align: center;
+}
+
+.name{
+  font-size: 16px;
+  margin-bottom: -40px;
+}
+
+.role {
+  margin-top: -40px;
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.headerDivider {
+  border-left:1px solid rgba(0, 0, 0, 0.1);
+  border-right:1px solid rgba(0, 0, 0, 0.1);
+  height:40px;
+  margin: 10px
+}
+
+.downarrow{
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.userstuff {
+  display: contents;
+  width: 300px;
+}

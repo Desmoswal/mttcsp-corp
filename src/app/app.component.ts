@@ -25,4 +25,25 @@ export class AppComponent {
       console.log('Mode web');
     }
   }
+
+  adminMenuItems = [
+    {name: "Admin Dashboard", link: "home", icon:"fa-id-card"},
+    {name: "Jobs", link: "jobs", icon: "fa-book"},
+    {name: "Employees", link: "employees", icon: "dx-icon-group"},
+    {name: "Statistics", link: "statistics", icon: "ion-md-stats"}
+  ]
+  commonMenuItems = [
+    {name: "Dashboard", link: "dashboard", icon: "fa-address-card"},
+    {name: "Available Jobs", link: "jobs", icon: "fa-book"},
+    {name: "Current Jobs", link: "currentjobs", icon: "fa-book-open"},
+    {name: "Job history", link: "history", icon: "fa-history"},
+    {name: "Chat", link: "chat", icon: "ion-md-chatboxes"}
+  ]
+  isAdmin = true;
+
+  isopen = false;
+  toggle()
+  {
+    this.isopen = !this.isopen;
+  }
 }
