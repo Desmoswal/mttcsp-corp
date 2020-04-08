@@ -1,6 +1,6 @@
 {
   "name": "mttcsp-corp",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "MTTCSP - Corporate",
   "author": {
     "name": "Desmoswal"
@@ -54,7 +54,6 @@
     "@types/jasminewd2": "2.0.8",
     "@types/mocha": "7.0.1",
     "@types/node": "12.11.1",
-    "@types/object-path": "0.11.0",
     "@typescript-eslint/eslint-plugin": "2.20.0",
     "@typescript-eslint/parser": "2.20.0",
     "chai": "4.2.0",
@@ -89,13 +88,8 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
-    "@angular/animations": "9.1.0",
-    "@angular/cdk": "9.2.0",
     "@angular/localize": "9.0.6",
-    "object-path": "0.11.4",
-    "reflect-metadata": "0.1.13",
-    "string-format": "2.0.0",
-    "truly-ui": "4.5.0",
-    "ts-md5": "1.2.7"
+    "@ng-bootstrap/ng-bootstrap": "6.0.0",
+    "bootstrap": "4.4.1"
   }
 }

@@ -5,15 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-//import { CoreModule } from './core/core.module';
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
-//TrulyUI
-import { CoreModule, InputModule, ButtonModule } from 'truly-ui';
-
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -22,7 +19,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -30,13 +26,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent],
   imports: [
-    CoreModule.forRoot({theme: 'default'}),
+    NgbModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    //CoreModule,
+    CoreModule,
     SharedModule,
     HomeModule,
     AppRoutingModule,
@@ -46,11 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }),
-
-    //TrulyUI
-    InputModule,
-    ButtonModule
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
