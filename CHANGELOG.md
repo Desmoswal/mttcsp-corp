@@ -4,7 +4,6 @@
 * Quick fix on readme and changed xenial to bionic in travis config ([386050c](https://github.com/Desmoswal/mttcsp-corp/commit/386050c))
 * Quick fix on test case, added bootstrap ([915dc59](https://github.com/Desmoswal/mttcsp-corp/commit/915dc59))
 * Quick fixes, change from scss to css, testing i18n ([eec2823](https://github.com/Desmoswal/mttcsp-corp/commit/eec2823))
-* Removed Bootstrap, App ready to work with TrulyUI ([1a5c2c7](https://github.com/Desmoswal/mttcsp-corp/commit/1a5c2c7))
 
 
 
