@@ -12,12 +12,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  menuItems = [
-    {name: "Profile", icon: "fas fa-address-card"},
-    {name: "Logout", icon: "fas fa-sign-out-alt"}
-]
-
-  dosomething(){
-    console.log("did something")
-  }
 }

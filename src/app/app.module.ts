@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
 //TrulyUI
-import { CoreModule, InputModule, ButtonModule, MenuModule, SidebarModule, IconsModule, ToolbarModule, AvatarModule, BadgeModule, PopupMenuModule } from 'truly-ui';
+import { CoreModule, InputModule, ButtonModule } from 'truly-ui';
 
 
 
@@ -50,14 +50,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
     //TrulyUI
     InputModule,
-    ButtonModule,
-    MenuModule,
-    SidebarModule,
-    IconsModule,
-    ToolbarModule,
-    AvatarModule,
-    BadgeModule,
-    PopupMenuModule
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

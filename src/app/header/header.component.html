@@ -1,30 +1,8 @@
-<tl-toolbar [color]="'primary'">
-  <tl-icon class="menu-icon" [lib]="'dx'">menu</tl-icon>
-  <span class="searchbar" ><tl-input [height]="'30px'" [iconAfter]="'fas fa-search'" [placeholder]="'Search..'" [clearButton]="true" [autocomplete]="'on'"></tl-input>
-  </span>
-  <span class="spacer"></span>
-  <ul>
-    <li><tl-badge [onlyDot]="true" [count]="2" [color]="'danger'"><tl-icon [lib]="'fa'" [animation]="'shake'" [size]="'22px'">bell</tl-icon></tl-badge></li>
-    <li><tl-badge [onlyDot]="true" [count]="5" [color]="'danger'"><tl-icon [lib]="'fa'" [animation]="'shake'" [size]="'22px'">envelope</tl-icon></tl-badge></li>
-  </ul>
-  <div class="headerDivider"></div>
-  <div class="userstuff" #trigger>
-      <div class="user-icon">
-      <tl-badge [color]="'danger'">
-        <span class="head-example">
-          <a #trigger class="trigger-element">
-            <tl-avatar #target1 (selected)="'dosomething()'" [char]="'MARK'" [size]="'40px'" [shape]="'circle'" [fontColor]="'#FFFFFF'" [bgColor]="'#87d068'"></tl-avatar>
-          </a>
-          <tl-popupmenu class="popupmenu" [positionX]="'after'" [target]="target2" [trigger]="trigger" [items]="menuItems" [label]="'name'" [icon]="'icon'"></tl-popupmenu>
-        </span>
-      </tl-badge>
-    </div>
-    <div class="namerole">
-      <p class="name">Mark Palmai</p>
-      <p class="role">Admin</p>
-    </div>
-    <tl-icon #target2 class="downarrow" [lib]="'fa'" [style]="'fas'">angle-down</tl-icon>
-  </div>
-  <div class="headerDivider"></div>
-</tl-toolbar>
-
+<tl-input
+     ngModel="Many Properties"
+     [iconBefore]="'ion-printer'"
+     [placeholder]="'With Placeholder'"
+     [textAfter]="'US'"
+     [clearButton]="true"
+     [autocomplete]="'off'">
+</tl-input>
