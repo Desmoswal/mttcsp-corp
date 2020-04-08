@@ -23,10 +23,6 @@ import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { JobsComponent } from './admin/jobs/jobs.component';
-import { EmployeesComponent } from './admin/employees/employees.component';
-import { StatisticsComponent } from './admin/statistics/statistics.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -34,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, DashboardComponent, JobsComponent, EmployeesComponent, StatisticsComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     CoreModule.forRoot({theme: 'default'}),
     BrowserModule,
