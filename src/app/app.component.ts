@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
+import { SidebarComponent, MenuItemModel, MenuEventArgs } from '@syncfusion/ej2-angular-navigations';
 
 @Component({
   selector: 'app-root',
@@ -25,4 +26,63 @@ export class AppComponent {
       console.log('Mode web');
     }
   }
+
+  @ViewChild('sidebar') sidebar: SidebarComponent;
+    public onCreated(args: any) {
+         this.sidebar.element.style.visibility = '';
+    }
+
+    closeClick(): void {
+        this.sidebar.hide();
+    };
+
+    toggleClick():void{
+      this.sidebar.toggle();
+    }
+
+    public menuItems: MenuItemModel[] = [
+      {
+        text: 'sidebar', id: 'toggleSidebar'
+      },
+      {
+          text: 'File',
+          items: [
+              { text: 'Open' },
+              { text: 'Save' },
+              { separator: true },
+              { text: 'Exit' }
+          ]
+      },
+      {
+          text: 'Edit',
+          items: [
+              { text: 'Cut' },
+              { text: 'Copy' },
+              { text: 'Paste' }
+          ]
+      },
+      {
+          text: 'View',
+          items: [
+              { text: 'Toolbar' },
+              { text: 'Sidebar' },
+              { text: 'Full Screen' }
+          ]
+      },
+      {
+          text: 'Tools',
+          items: [
+              { text: 'Spelling & Grammar' },
+              { text: 'Customize' },
+              { text: 'Options' }
+          ]
+      },
+      { text: 'Go'},
+      { text: 'Help' }
+  ];
+
+  private select(args: MenuEventArgs): void {
+    if(args.item.id == "toggleSidebar")
+      this.toggleClick()
+}
 }

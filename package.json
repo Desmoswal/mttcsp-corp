@@ -86,5 +86,18 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "dependencies": {
+    "@syncfusion/ej2-angular-buttons": "18.1.43",
+    "@syncfusion/ej2-angular-charts": "18.1.44",
+    "@syncfusion/ej2-angular-dropdowns": "18.1.43",
+    "@syncfusion/ej2-angular-grids": "18.1.43",
+    "@syncfusion/ej2-angular-inputs": "18.1.43",
+    "@syncfusion/ej2-angular-layouts": "18.1.42",
+    "@syncfusion/ej2-angular-lists": "18.1.43",
+    "@syncfusion/ej2-angular-navigations": "18.1.43",
+    "@syncfusion/ej2-angular-querybuilder": "18.1.43",
+    "@syncfusion/ej2-layouts": "18.1.42",
+    "@syncfusion/ej2-notifications": "18.1.42"
   }
 }

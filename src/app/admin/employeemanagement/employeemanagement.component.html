@@ -1,0 +1,27 @@
+<div class="col-lg-12 control-section" style="min-height: auto;">
+  <ejs-querybuilder #querybuilder class="row" [dataSource]="dataSource" width="100%" [rule]="importRules"
+    (ruleChange)="updateRule($event)">
+    <!--<e-columns>
+      <e-column field="TaskID" label="Task ID" type="number"></e-column>
+      <e-column field="Name" label="Name" type="string"></e-column>
+      <e-column field="Category" label="Category" type="string"></e-column>
+      <e-column field="SerialNo" label="Serial No" type="string"></e-column>
+      <e-column field="InvoiceNo" label="Invoice No" type="string"></e-column>
+      <e-column field="Status" label="Status" type="string"></e-column>
+    </e-columns>-->
+  </ejs-querybuilder>
+</div>
+<div class="col-lg-12 control-section">
+  <div class="content-wrapper">
+    <ejs-grid id="Grid" #grid [dataSource]="gridDataSource" [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
+      <!--<e-columns>
+        <e-column field="EmployeeID" headerText="Task ID" width="120" textAlign="Right"></e-column>
+        <e-column field="LastName" headerText="Name" width="140"></e-column>
+        <e-column field="Title" headerText="Category" width="140" textAlign="Right"></e-column>
+        <e-column field="BirthDate" headerText="Invoice No" width="130"></e-column>
+        <e-column field="HireDate" headerText="Status" width="120"></e-column>
+        <e-column field="Country" headerText="Serial No" width="130"></e-column>
+      </e-columns>-->
+    </ejs-grid>
+  </div>
+</div>
