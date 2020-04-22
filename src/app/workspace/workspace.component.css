@@ -1,0 +1,16 @@
+.content-wrapper {
+  display: block;
+  justify-content: center;
+  width: 1175px;
+  background-color: green;
+}
+
+.content {
+  width: 100%;
+  min-height: 100%;
+}
+
+.accordion-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

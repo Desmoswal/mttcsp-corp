@@ -8,7 +8,7 @@ import { AdminstatisticsComponent } from './admin/adminstatistics/adminstatistic
 import { EmployeemanagementComponent } from './admin/employeemanagement/employeemanagement.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'admindashboard', component: AdmindashboardComponent},
   { path: 'adminjobs', component: AdminjobsComponent},
   { path: 'adminstatistics', component: AdminstatisticsComponent},

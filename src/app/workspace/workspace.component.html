@@ -1,0 +1,42 @@
+<div class="accordion-container">
+  <ejs-accordion>
+    <e-accordionitems>
+      <e-accordionitem expanded='false'>
+        <ng-template #header>
+          <div>Current Job Info</div>
+        </ng-template>
+        <ng-template #content>
+          <p>ID:</p>
+          <p>Source Language:</p>
+          <p>Requested Language:</p>
+          <p>Request Date:</p>
+        </ng-template>
+      </e-accordionitem>
+    </e-accordionitems>
+  </ejs-accordion>
+</div>
+<div id='container' class="workspace">
+  <ejs-splitter #horizontal height='1200px' width='100%' >
+    <e-panes>
+        <e-pane>
+          <ng-template #content>
+            <div class="content">
+            <div class="content-wrapper">
+              <ejs-pdfviewer id="pdfViewer" class="pdfViewerComponent" [serviceUrl]='service' [documentPath]='document' style="display:block; height: 1200px;"></ejs-pdfviewer>
+            </div>
+          </div>
+        </ng-template>
+      </e-pane>
+      <e-pane>
+        <ng-template #content>
+          <div class="content">
+            <div class="content-wrapper">
+              <ejs-documenteditorcontainer style="display:block; height: 1200px;" [enableToolbar]=true></ejs-documenteditorcontainer>
+            </div>
+          </div>
+        </ng-template>
+      </e-pane>
+    </e-panes>
+  </ejs-splitter>
+</div>
+

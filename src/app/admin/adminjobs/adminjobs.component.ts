@@ -11,5 +11,5 @@ export class AdminjobsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  cellSpacing = [10,10]
 }

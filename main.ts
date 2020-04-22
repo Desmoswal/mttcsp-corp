@@ -1,6 +1,9 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+const dbservice = require('./backend/services/databaseservice.js')
+const employee = require('./backend/services/employeeservice.js')
+const language = require('./backend/services/languageservice.js')
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -22,6 +25,10 @@ function createWindow(): BrowserWindow {
       allowRunningInsecureContent: (serve) ? true : false,
     },
   });
+
+  dbservice.connect();
+
+
 
   if (serve) {
     require('electron-reload')(__dirname, {
