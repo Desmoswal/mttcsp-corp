@@ -1,5 +1,6 @@
-## 0.0.0 (2020-04-16)
+## <small>0.0.2 (2020-04-22)</small>
 
+* Added and set up backend, progress on different components ([2400d4a](https://github.com/Desmoswal/mttcsp-corp/commit/2400d4a))
 * Added syncfusion, generated some components and tested syncfusion's capabilities. ([7250f9b](https://github.com/Desmoswal/mttcsp-corp/commit/7250f9b))
 * Initial Commit ([732e055](https://github.com/Desmoswal/mttcsp-corp/commit/732e055))
 * Project cleaned, ready for further development ([802abc7](https://github.com/Desmoswal/mttcsp-corp/commit/802abc7))
