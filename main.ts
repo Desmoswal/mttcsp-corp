@@ -4,6 +4,7 @@ import * as url from 'url';
 const dbservice = require('./backend/services/databaseservice.js')
 const employee = require('./backend/services/employeeservice.js')
 const language = require('./backend/services/languageservice.js')
+const job = require('./backend/services/jobservice.js')
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),

@@ -1,7 +1,8 @@
-## <small>0.0.2 (2020-04-22)</small>
+## <small>0.0.2 (2020-04-24)</small>
 
 * Added and set up backend, progress on different components ([2400d4a](https://github.com/Desmoswal/mttcsp-corp/commit/2400d4a))
 * Added syncfusion, generated some components and tested syncfusion's capabilities. ([7250f9b](https://github.com/Desmoswal/mttcsp-corp/commit/7250f9b))
+* Changelog updated ([6b593fd](https://github.com/Desmoswal/mttcsp-corp/commit/6b593fd))
 * Initial Commit ([732e055](https://github.com/Desmoswal/mttcsp-corp/commit/732e055))
 * Project cleaned, ready for further development ([802abc7](https://github.com/Desmoswal/mttcsp-corp/commit/802abc7))
 * Quick fix on readme and changed xenial to bionic in travis config ([386050c](https://github.com/Desmoswal/mttcsp-corp/commit/386050c))

@@ -114,22 +114,9 @@ exports.updateProfile = (req,res) => {
 }
 
 ipcMain.on('async-employee-update', (event, arg) => {
-  const employee = new Employee({
-      _id: arg.id,
-      firstName: arg.firstName,
-      lastName: arg.lastName,
-      email: arg.email,
-      password: arg.password,
-      address: arg.address,
-      city: arg.city,
-      country: arg.country,
-      zip: arg.zip,
-      languages: arg.languages,
-      profilePic: arg.profilePic,
-      role: arg.role
-  })
-  console.log(employee)
-  Employee.update({_id: arg.id}, employee).then(result => {
+  console.log(arg)
+
+  Employee.update({_id: arg._id}, arg).then(result => {
       console.log(result)
       if(result.n > 0){
           event.reply('async-employee-update-reply', 'Update successful')
@@ -143,6 +130,7 @@ ipcMain.on('async-employee-update', (event, arg) => {
 })
 
 ipcMain.on('async-employee-remove', (event,arg) => {
+  console.log(arg)
   Employee.remove({_id: arg.id}).then(result => {
     console.log(result);
     if(result.n > 0){
@@ -182,7 +170,7 @@ ipcMain.on('async-employee-get-all', (event, arg) => {
 })
 
 ipcMain.on('async-employee-get-by-id', (event, arg) => {
-  Employee.find(arg.id).then(result => {
+  Employee.find(arg._id).then(result => {
     //console.log(result)
     event.reply('async-employee-get-by-id-reply', result);
   }).catch(error => {

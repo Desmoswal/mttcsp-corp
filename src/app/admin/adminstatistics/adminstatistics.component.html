@@ -1,5 +1,3 @@
-
-
 <div>
   <ejs-chart id="chart-container2" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'[legendSettings]='legendSettings' [tooltip]='tooltip' [title]='title'>
     <e-series-collection>
@@ -9,9 +7,9 @@
 </div>
 
 
-  <ejs-accumulationchart id="container" width='92%' [legendSettings]="legendSettings" [title]="title" [enableAnimation]= 'true' [center]='center' [tooltip]="tooltip">
-    <e-accumulation-series-collection>
-        <e-accumulation-series name='Browser' [dataSource]='piedata' xName='x' yName='y' [startAngle]="startAngle" [endAngle]="endAngle" innerRadius="0%" radius="70%" [explode]='explode' explodeOffset='10%' [explodeIndex]='0'>
-        </e-accumulation-series>
-    </e-accumulation-series-collection>
+<ejs-accumulationchart id="container" width='92%' [legendSettings]="legendSettings" [title]="title" [enableAnimation]= 'true' [center]='center' [tooltip]="tooltip">
+  <e-accumulation-series-collection>
+      <e-accumulation-series name='Browser' [dataSource]='piedata' xName='x' yName='y' [startAngle]="startAngle" [endAngle]="endAngle" innerRadius="0%" radius="70%" [explode]='explode' explodeOffset='10%' [explodeIndex]='0'>
+      </e-accumulation-series>
+  </e-accumulation-series-collection>
 </ejs-accumulationchart>

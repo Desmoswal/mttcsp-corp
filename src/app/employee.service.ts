@@ -10,49 +10,23 @@ export class EmployeeService {
   constructor() { }
   employeeList: Employee[] = [];
 
-  createEmployee(){
-    const employeeData = {
-      firstName: 'asd',
-      lastName: 'qwe',
-      email: 'email13311@email.com',
-      password: 'pass',
-      address: 'address',
-      city: 'city',
-      country: 'country',
-      zip: '11111',
-      languages: ['en','hu', 'dk'],
-      role: 'employee'
-    }
-
-    ipcRenderer.send('async-employee-create', employeeData)
+  createEmployee(newEmployee: Employee){
+    ipcRenderer.send('async-employee-create', newEmployee)
     ipcRenderer.on('async-employee-create-reply', (event, arg) => {
       console.log(arg)
     })
   }
 
-  updateEmployee() {
-    const employeeData = {
-      id: '5e98719e35c3f43fd0b0105e',
-      firstName: 'firstname',
-      lastName: 'lastname',
-      email: 'email@email1.com',
-      password: 'pass',
-      address: 'address',
-      city: 'city',
-      country: 'country',
-      zip: '11111',
-      languages: ['en','hu', 'dk'],
-      role: 'admin'
-    }
-    ipcRenderer.send('async-employee-update', employeeData)
+  updateEmployee(modifiedEmployee: Employee) {
+    ipcRenderer.send('async-employee-update', modifiedEmployee)
     ipcRenderer.on('async-employee-update-reply', (event, arg) => {
       console.log(arg)
     })
   }
 
-  removeEmployee() {
+  removeEmployee(employeeId: string) {
     const employeeData = {
-      id: '5e98719e35c3f43fd0b0105e'
+      id: employeeId
     }
     ipcRenderer.send('async-employee-remove', employeeData)
     ipcRenderer.on('async-employee-remove-reply', (event, arg) => {
@@ -69,7 +43,6 @@ export class EmployeeService {
         this.employeeList.push(element);
       });
     })
-    //console.log(this.employeeList)
     return this.employeeList;
   }
 }

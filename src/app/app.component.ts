@@ -81,7 +81,7 @@ export class AppComponent {
       { text: 'Help' }
   ];
 
-  private select(args: MenuEventArgs): void {
+  public select(args: MenuEventArgs): void {
     if(args.item.id == "toggleSidebar")
       this.toggleClick()
 }

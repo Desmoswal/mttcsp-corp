@@ -8,7 +8,6 @@ import { GridComponent, PageService, SelectionService, ToolbarService } from '@s
 import { EmployeeService } from '../../employee.service';
 import { Employee } from '../../employee.model';
 import { Language } from '../../language.model';
-import { LanguageService } from '../../language.service';
 const { ipcRenderer } = require('electron')
 
 @Component({
@@ -19,7 +18,7 @@ const { ipcRenderer } = require('electron')
 })
 export class EmployeemanagementComponent implements OnInit {
 
-  constructor(public employeeService: EmployeeService, public languageService: LanguageService) { }
+  constructor(public employeeService: EmployeeService) { }
 
   @ViewChild('grid') grid: GridComponent;
   @ViewChild('querybuilder') qryBldrObj: QueryBuilderComponent;
@@ -49,68 +48,66 @@ export class EmployeemanagementComponent implements OnInit {
   {
     this.employeeList = this.employeeService.getAllEmployees();
     this.grid.dataSource = this.employeeList;
-
-    this.languageList = this.languageService.getAllLanguages();
-    console.log(this.languageList)
   }
 
 
   actionBegin(args: any) :void {
     let gridInstance: any = (<any>document.getElementById('Grid')).ej2_instances[0];
-    if (args.requestType === 'save'){
     console.log(args)
-        if (gridInstance.pageSettings.currentPage !== 1 && gridInstance.editSettings.newRowPosition === 'Top') {
-            args.index = (gridInstance.pageSettings.currentPage * gridInstance.pageSettings.pageSize) - gridInstance.pageSettings.pageSize;
-        } else if (gridInstance.editSettings.newRowPosition === 'Bottom') {
-            args.index = (gridInstance.pageSettings.currentPage * gridInstance.pageSettings.pageSize) - 1;
+    if (args.requestType === 'save'){
+      const newData = args.data;
+      if(isNullOrUndefined(newData._id)){
+        const newEmployee: Employee = {
+          _id: '',
+          firstName: newData.firstName,
+          lastName: newData.lastName,
+          email: newData.email,
+          password: newData.password,
+          address: newData.address,
+          city: newData.city,
+          country: newData.country,
+          zip: newData.zip,
+          languages: ['hu'],
+          profilePic: "",
+          role: newData.role
         }
+        console.log("new employee", newEmployee)
+        this.employeeService.createEmployee(newEmployee);
+        this.grid.refresh();
+      }
+      else {
+        const modifiedEmployee: Employee = {
+          _id: newData._id,
+          firstName: newData.firstName,
+          lastName: newData.lastName,
+          email: newData.email,
+          password: newData.password,
+          address: newData.address,
+          city: newData.city,
+          country: newData.country,
+          zip: newData.zip,
+          languages: ['hu'],
+          profilePic: "",
+          role: newData.role
+        }
+        console.log("modified employee", modifiedEmployee)
+        this.employeeService.updateEmployee(modifiedEmployee);
+        this.grid.refresh();
+      }
+
+    }
+    else if(args.requestType === 'delete'){
+      this.employeeService.removeEmployee(args.data[0]._id)
     }
   }
-
-
-  /*
-  actionBegin(args: SaveEventArgs): void {
-        if (args.requestType === 'beginEdit' || args.requestType === 'add') {
-            this.orderForm = this.createFormGroup(args.rowData);
-        }
-        if (args.requestType === 'save') {
-            if (this.orderForm.valid) {
-                args.data = this.orderForm.value;
-            } else {
-                args.cancel = true;
-            }
-        }
-    }
-
-    actionComplete(args: DialogEditEventArgs): void {
-        if (args.requestType === 'beginEdit' || args.requestType === 'add') {
-            // Set initail Focus
-            if (args.requestType === 'beginEdit') {
-                (args.form.elements.namedItem('CustomerID') as HTMLInputElement).focus();
-            } else if (args.requestType === 'add') {
-                (args.form.elements.namedItem('OrderID') as HTMLInputElement).focus();
-            }
-        }
-    }
-    */
-/*
-   actionComplete(args) {
-    if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
-        const dialog = args.dialog;
-        const CustomerID = 'CustomerID';
-        // change the header of the dialog
-        dialog.header = args.requestType === 'beginEdit' ? 'Record of ' + args.rowData[CustomerID] : 'New Customer';
-    }
-  }
-*/
   updateRule(args: RuleChangeEventArgs): void {
     const predicate: Predicate = this.qryBldrObj.getPredicate(args.rule);
     const fltrDataSource: Employee[] = [];
     let dataManagerQuery: Query;
     if (isNullOrUndefined(predicate)) {
-        dataManagerQuery = new Query().select(['_id', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']);
+        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']);
     } else {
-        dataManagerQuery = new Query().select(['_id', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']).where(predicate);
+        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']).where(predicate);
     }
     new DataManager(this.employeeList).executeQuery(dataManagerQuery).then((e: ReturnOption) => {
             (<Object[]>e.result).forEach((data: Employee) => {

@@ -5,6 +5,8 @@
       <e-column field="firstName" label="First Name" type="string"></e-column>
       <e-column field="lastName" label="Last Name" type="string"></e-column>
       <e-column field="email" label="Email" type="string"></e-column>
+      <e-column field="city" label="City" type="string"></e-column>
+      <e-column field="zip" label="Zip" type="number"></e-column>
       <e-column field="country" label="Country" type="string"></e-column>
       <e-column field="role" label="Role" type="string"></e-column>
       <e-column field="languages" label="Languanges" type="array"></e-column>
@@ -16,10 +18,21 @@
     <ejs-grid id="Grid" #grid [dataSource]="gridDataSource" [allowGrouping]="true"  [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
       <e-columns>
       <e-column field="_id" headerText="Employee ID" type="string" [allowEditing]= 'false'></e-column>
+      <e-column field="profilePic" headerText="Profile Picture" type="string">
+        <ng-template #template let-data>
+          <div>
+            <img src="{{data.profilePic}}" style="width: 50px;">
+          </div>
+        </ng-template>
+      </e-column>
       <e-column field="firstName" headerText="First Name" type="string"></e-column>
       <e-column field="lastName" headerText="Last Name" type="string"></e-column>
       <e-column field="email" headerText="Email" type="string"></e-column>
+      <e-column field="password" headerText="Password" type="string"></e-column>
+      <e-column field="address" headerText="Address" type="string"></e-column>
+      <e-column field="city" headerText="City" type="string"></e-column>
       <e-column field="country" headerText="Country" type="string"></e-column>
+      <e-column field="zip" headerText="Zip" type="number"></e-column>
       <e-column field="role" headerText="Role" type="string"></e-column>
       <e-column field="languages" headerText="Languanges" type="array">
         <ng-template #template let-data >
