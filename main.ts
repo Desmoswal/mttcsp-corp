@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, ipcMain } from 'electron';
+import { app, BrowserWindow, screen, ipcMain, Tray, Menu } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 const dbservice = require('./backend/services/databaseservice.js')
@@ -10,11 +10,38 @@ let win: BrowserWindow = null;
 const args = process.argv.slice(1),
     serve = args.some(val => val === '--serve');
 
+
+let tray
+
+let trayMenu = Menu.buildFromTemplate([
+  {label: 'asd'},
+  {type: "separator"},
+  {role: 'quit'}
+])
+
+
+function createTray(){
+  tray = new Tray('trayTemplate@2x.png')
+  tray.setToolTip('MTTCSP')
+
+  tray.on('click', e => {
+    if(e.shiftKey){
+      app.quit()
+    }
+    else {
+      win.isVisible() ? win.hide() : win.show()
+    }
+  })
+
+  tray.setContextMenu(trayMenu)
+}
+
 function createWindow(): BrowserWindow {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
+  createTray();
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,

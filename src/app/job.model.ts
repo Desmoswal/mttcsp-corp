@@ -10,4 +10,5 @@ export class Job {
   creationDate: string;
   startDate: string;
   completionDate: string;
+  reviewBy: string;
 }

@@ -1,0 +1,105 @@
+<div class="control-section">
+  <ejs-dashboardlayout id='defaultLayout' [columns]="6" #defaultLayout [cellSpacing]='cellSpacing'>
+      <div id="one" class="e-panel" data-row="0" data-col="0" data-sizeX="6" data-sizeY="1">
+          <div class="e-panel-container">
+          <div>
+            <p>Job info</p>
+          </div>
+            <div tabindex="0" class="e-card" id="basic">
+              <div class="e-card-header">
+                  <div class="e-card-header-caption">
+                      <div class="e-card-title">Available Jobs</div>
+                  </div>
+              </div>
+              <div class="e-card-content">
+                  {{jobs.length}}
+              </div>
+          </div>
+            <div tabindex="1" class="e-card" id="basic">
+              <div class="e-card-header">
+                  <div class="e-card-header-caption">
+                      <div class="e-card-title">Active jobs</div>
+                  </div>
+              </div>
+              <div class="e-card-content">
+                  {{jobs.length}}
+              </div>
+          </div>
+            <div tabindex="2" class="e-card" id="basic">
+              <div class="e-card-header">
+                  <div class="e-card-header-caption">
+                      <div class="e-card-title">Under review</div>
+                  </div>
+              </div>
+              <div class="e-card-content">
+                  {{jobsForReview.length}}
+              </div>
+          </div>
+        </div>
+      </div>
+      <div id="two" class="e-panel" data-row="1" data-col="0" data-sizeX="3" data-sizeY="2">
+          <span id="close" class="e-template-icon e-clear-icon"></span>
+          <div class="e-panel-container">
+            <div class="header">Available Jobs</div>
+            <div class="text-align">
+              <ejs-accordion>
+                <e-accordionitems>
+                  <e-accordionitem expanded='false' *ngFor="let job of jobs">
+                    <ng-template #header>
+                      <div>{{job._id}}</div>
+                    </ng-template>
+                    <ng-template #content>
+                      <div>
+                        <p>Creation date: {{job.creationDate}}</p>
+                        <p>Original language: {{job.sourceLang}}</p>
+                        <p>Requested language: {{job.reqLang}}</p>
+                        <p>Folder: {{job.folder}}</p>
+                        <p>Status: {{job.status}}</p>
+                        <button (click)="acceptJob(job)">Accept job</button>
+                      </div>
+                    </ng-template>
+                  </e-accordionitem>
+                </e-accordionitems>
+            </ejs-accordion>
+            </div>
+          </div>
+      </div>
+      <div id="three" class="e-panel" data-row="1" data-col="3" data-sizeX="3" data-sizeY="2">
+          <span id="close" class="e-template-icon e-clear-icon"></span>
+          <div class="e-panel-container">
+            <div class="header">Review Needed</div>
+            <div class="text-align">
+              <ejs-accordion>
+                <e-accordionitems>
+                  <e-accordionitem expanded='false' *ngFor="let job of jobsForReview">
+                    <ng-template #header>
+                      <div>{{job._id}}</div>
+                    </ng-template>
+                    <ng-template #content>
+                      <div>
+                        <p>Creation date: {{job.creationDate}}</p>
+                        <p>Original language: {{job.sourceLang}}</p>
+                        <p>Requested language: {{job.reqLang}}</p>
+                        <p>Folder: {{job.folder}}</p>
+                        <p>Status: {{job.status}}</p>
+                        <button (click)="acceptJob(job)">Accept job</button>
+                      </div>
+                    </ng-template>
+                  </e-accordionitem>
+                </e-accordionitems>
+            </ejs-accordion>
+            </div>
+          </div>
+      </div>
+  </ejs-dashboardlayout>
+</div>
+
+
+<button (click)="getJobByEmployee()">GetJobs</button>
+
+<button (click)="getJobByEmployee()">GetJob</button>
+<button (click)="getAvailableJobs()">GetAvailalbeJobs</button>
+<button (click)="getEmployeeHistory()">GetEmployeeHistory</button>
+<button (click)="getJobsForReview()">GetJobsForReview</button>
+
+

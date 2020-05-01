@@ -95,3 +95,105 @@ ipcMain.on('async-job-get-by-id', (event, arg) => {
     event.reply('async-job-get-by-id-reply', error.message);
   })
 })
+
+ipcMain.on('async-job-get-by-employee', (event, arg)=> {
+  const jobList = [];
+  Job.find({employeeId: arg.employeeId}).then(result => {
+    result.forEach(element => {
+      const job = {
+        _id: element._id.toString(),
+        clientId: element.clientId,
+        folder: element.folder,
+        price: element.price,
+        sourceLang: element.sourceLang,
+        reqLang: element.reqLang,
+        status: element.status,
+        employeeId: element.employeeId,
+        creationDate: element.creationDate,
+        startDate: element.startDate,
+        completionDate: element.completionDate
+      }
+      jobList.push(job);
+    });
+    event.reply('async-job-get-by-employee-reply', jobList);
+  }).catch(error => {
+    event.reply('async-job-get-by-employee-reply', error.message)
+  })
+})
+
+ipcMain.on('async-job-get-available', (event, arg) => {
+  const jobList = [];
+  Job.find({status: "CREATED"}).then(result => {
+    result.forEach(element => {
+      const job = {
+        _id: element._id.toString(),
+        clientId: element.clientId,
+        folder: element.folder,
+        price: element.price,
+        sourceLang: element.sourceLang,
+        reqLang: element.reqLang,
+        status: element.status,
+        employeeId: element.employeeId,
+        creationDate: element.creationDate,
+        startDate: element.startDate,
+        completionDate: element.completionDate
+      }
+      jobList.push(job);
+    });
+    event.reply('async-job-get-available-reply', jobList);
+  }).catch(error => {
+    event.reply('async-job-get-available-reply', error.message)
+  })
+})
+
+ipcMain.on('async-job-get-employee-history', (event, arg) => {
+  const jobList = [];
+  Job.find({status: "DONE", employeeId: arg.employeeId}).then(result => {
+    result.forEach(element => {
+      const job = {
+        _id: element._id.toString(),
+        clientId: element.clientId,
+        folder: element.folder,
+        price: element.price,
+        sourceLang: element.sourceLang,
+        reqLang: element.reqLang,
+        status: element.status,
+        employeeId: element.employeeId,
+        creationDate: element.creationDate,
+        startDate: element.startDate,
+        completionDate: element.completionDate
+      }
+      jobList.push(job);
+    });
+    event.reply('async-job-get-employee-history-reply', jobList);
+  }).catch(error => {
+    event.reply('async-job-get-employee-history-reply', error.message)
+  })
+})
+
+ipcMain.on('async-job-get-review', (event, arg) => {
+  console.log('Getting reviews')
+  const jobList =[];
+  Job.find({status: "REVIEW"}).then(result => {
+    result.forEach(element => {
+      const job = {
+        _id: element._id.toString(),
+        clientId: element.clientId,
+        folder: element.folder,
+        price: element.price,
+        sourceLang: element.sourceLang,
+        reqLang: element.reqLang,
+        status: element.status,
+        employeeId: element.employeeId,
+        creationDate: element.creationDate,
+        startDate: element.startDate,
+        completionDate: element.completionDate
+      }
+      console.log(job)
+      jobList.push(job);
+    });
+    event.reply('async-job-get-review-reply', jobList);
+  }).catch(error => {
+    event.reply('async-job-get-review-reply', error.message);
+  })
+})

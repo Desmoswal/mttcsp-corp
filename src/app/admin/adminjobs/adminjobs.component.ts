@@ -16,8 +16,6 @@ export class AdminjobsComponent implements OnInit {
 
   constructor(public jobService: JobService) { }
 
-  cellSpacing = [10,10]
-
   public jobList: Job[] = [];
   public gridDataSource = this.jobList;
   public pageSettings: Object;
@@ -59,7 +57,8 @@ export class AdminjobsComponent implements OnInit {
           employeeId: newData.employeeId,
           creationDate: newData.creationDate,
           startDate: newData.startDate,
-          completionDate: newData.completionDate
+          completionDate: newData.completionDate,
+          reviewBy: newData.reviewBy
         }
         console.log("new job", newJob)
         this.jobService.createJob(newJob);
@@ -77,7 +76,8 @@ export class AdminjobsComponent implements OnInit {
           employeeId: newData.employeeId,
           creationDate: newData.creationDate,
           startDate: newData.startDate,
-          completionDate: newData.completionDate
+          completionDate: newData.completionDate,
+          reviewBy: newData.reviewBy
         }
         console.log("modified job", modifiedJob)
         this.jobService.updateJob(modifiedJob);

@@ -45,8 +45,10 @@ import { EmployeemanagementComponent } from './admin/employeemanagement/employee
 import { AdminjobsComponent } from './admin/adminjobs/adminjobs.component';
 import { AdminstatisticsComponent } from './admin/adminstatistics/adminstatistics.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
-import { WorkspaceComponent } from './workspace/workspace.component';
+import { WorkspaceComponent } from './employee/workspace/workspace.component';
 import { LanguagemanagementComponent } from './admin/languagemanagement/languagemanagement.component';
+import { AvailablejobsComponent } from './employee/availablejobs/availablejobs.component';
+import { JobhistoryComponent } from './employee/jobhistory/jobhistory.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -54,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent,],
+  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent, AvailablejobsComponent, JobhistoryComponent,],
   imports: [
     BrowserModule,
     FormsModule,
