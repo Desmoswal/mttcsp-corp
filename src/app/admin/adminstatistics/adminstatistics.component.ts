@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-adminstatistics',
@@ -9,14 +10,14 @@ export class AdminstatisticsComponent implements OnInit {
 
   constructor() { }
 
-  public primaryXAxis: Object;
-    public chartData: Object[];
-    public primaryYAxis: Object;
-    public legendSettings: Object;
-    public tooltip: Object;
+  public primaryXAxis: Record<string, any>;
+    public chartData: Record<string, any>[];
+    public primaryYAxis: Record<string, any>;
+    public legendSettings: Record<string, any>;
+    public tooltip: Record<string, any>;
     public title: string;
-    public marker: Object;
-    public piedata: Object[];
+    public marker: Record<string, any>;
+    public piedata: Record<string, any>[];
     ngOnInit(): void {
         // Tooltip for chart
         this.tooltip = {
@@ -73,10 +74,10 @@ export class AdminstatisticsComponent implements OnInit {
         this.title = 'Mobile Browser Statistics';
     }
 
-    public pieData: Object[];
+    public pieData: Record<string, any>[];
     public startAngle: number;
     public endAngle: number;
-    public center: Object ;
+    public center: Record<string, any> ;
     public explode: boolean ;
     public enableAnimation: boolean ;
 }

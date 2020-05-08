@@ -30,13 +30,14 @@ export class AppComponent {
   @ViewChild('sidebar') sidebar: SidebarComponent;
     public onCreated(args: any) {
          this.sidebar.element.style.visibility = '';
+         this.sidebar.hide();
     }
 
     closeClick(): void {
         this.sidebar.hide();
-    };
+    }
 
-    toggleClick():void{
+    toggleClick(): void{
       this.sidebar.toggle();
     }
 

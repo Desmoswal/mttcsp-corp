@@ -16,8 +16,8 @@ export class LanguagemanagementComponent implements OnInit {
 
   public languageList: Language[] = [];
   public gridDataSource = this.languageList;
-  public pageSettings: Object;
-  public editSettings: Object;
+  public pageSettings: Record<string, any>;
+  public editSettings: Record<string, any>;
   public toolbar: string[];
 
   ngOnInit(): void {
@@ -28,7 +28,9 @@ export class LanguagemanagementComponent implements OnInit {
   }
 
   getAllLanguages() {
-    this.languageList = this.lanugageService.getAllLanguages();
+    this.lanugageService.getAllLanguages().then((languageList) => {
+      this.languageList = languageList
+    });
     console.log(this.languageList)
   }
 
@@ -37,8 +39,8 @@ export class LanguagemanagementComponent implements OnInit {
     this.grid.refresh();
   }
 
-  actionBegin(args: any) :void {
-    let gridInstance: any = (<any>document.getElementById('Grid')).ej2_instances[0];
+  actionBegin(args: any): void {
+    const gridInstance: any = (document.getElementById('Grid') as any).ej2_instances[0];
     console.log(args)
     if(args.requestType === 'save'){
       const inputLanguage: Language = {

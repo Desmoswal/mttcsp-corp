@@ -88,6 +88,7 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
+    "@google-cloud/storage": "4.7.0",
     "@syncfusion/ej2-angular-buttons": "18.1.43",
     "@syncfusion/ej2-angular-charts": "18.1.44",
     "@syncfusion/ej2-angular-documenteditor": "18.1.44",
@@ -99,11 +100,13 @@
     "@syncfusion/ej2-angular-lists": "18.1.43",
     "@syncfusion/ej2-angular-navigations": "18.1.43",
     "@syncfusion/ej2-angular-pdfviewer": "18.1.44",
+    "@syncfusion/ej2-angular-popups": "18.1.46",
     "@syncfusion/ej2-angular-querybuilder": "18.1.43",
     "@syncfusion/ej2-layouts": "18.1.42",
     "@syncfusion/ej2-notifications": "18.1.42",
     "bcrypt": "4.0.1",
     "dotenv": "8.2.0",
+    "jwt-decode": "2.2.0",
     "mongoose": "5.9.9",
     "mongoose-unique-validator": "2.0.3",
     "passport": "0.4.1",

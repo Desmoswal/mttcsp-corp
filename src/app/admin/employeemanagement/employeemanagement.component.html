@@ -1,5 +1,5 @@
 <div class="col-lg-12 control-section" style="min-height: auto;">
-  <ejs-querybuilder #querybuilder class="row" [dataSource]="gridDataSource" width="100%" (ruleChange)="updateRule($event)">
+  <ejs-querybuilder #querybuilder class="row" [dataSource]="employeeList" width="100%" (ruleChange)="updateRule($event)">
     <e-columns>
       <e-column field="_id" label="Employee ID" type="string"></e-column>
       <e-column field="firstName" label="First Name" type="string"></e-column>
@@ -15,7 +15,7 @@
 </div>
 <div class="col-lg-12 control-section">
   <div class="content-wrapper">
-    <ejs-grid id="Grid" #grid [dataSource]="gridDataSource" [allowGrouping]="true"  [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
+    <ejs-grid id="Grid" #grid [dataSource]="employeeList" [allowGrouping]="true"  [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
       <e-columns>
       <e-column field="_id" headerText="Employee ID" type="string" [allowEditing]= 'false'></e-column>
       <e-column field="profilePic" headerText="Profile Picture" type="string">

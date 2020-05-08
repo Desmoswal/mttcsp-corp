@@ -7,8 +7,8 @@ export class Employee {
   address: string;
   city: string;
   country: string;
-  zip: Number;
+  zip: number;
   languages: Array<string>;
   profilePic: string;
   role: string;
-};
+}

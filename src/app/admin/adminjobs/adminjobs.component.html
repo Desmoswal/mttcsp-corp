@@ -1,8 +1,6 @@
-<!--
--->
 <div class="col-lg-12 control-section">
   <div class="content-wrapper">
-    <ejs-grid id="Grid" #grid [dataSource]="gridDataSource" [allowGrouping]="true"  [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
+    <ejs-grid id="Grid" #grid [dataSource]="jobList" [allowGrouping]="true"  [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
       <e-columns>
       <e-column field="_id" headerText="Job ID" type="string" [allowEditing]= 'false'></e-column>
       <e-column field="clientId" headerText="Client ID" type="string" [allowEditing]= 'false'></e-column>
@@ -15,19 +13,8 @@
       <e-column field="creationDate" headerText="Creation Date" type="string"></e-column>
       <e-column field="startDate" headerText="Start Date" type="string"></e-column>
       <e-column field="completionDate" headerText="Complition Date" type="string"></e-column>
-      <!--<e-column field="languages" headerText="Languanges" type="array">
-        <ng-template #template let-data >
-        <div>
-          <ejs-chiplist id="chip" selection="Multiple" *ngFor="let lang of data.languages" >
-            <e-chips >
-                <e-chip text="{{lang}}" cssClass="e-primary"></e-chip>
-            </e-chips>
-        </ejs-chiplist>
-        </div>
-        </ng-template>
-      </e-column>-->
+      <e-column field="reviewBy" headerText="Reviewed by" type="string"></e-column>
       </e-columns>
     </ejs-grid>
   </div>
 </div>
-<button (click)=getAllJobs()>GetJobs</button>

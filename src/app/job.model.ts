@@ -2,7 +2,7 @@ export class Job {
   _id: string;
   clientId: string;
   folder: string;
-  price: Number;
+  price: number;
   sourceLang: string;
   reqLang: string;
   status: string;

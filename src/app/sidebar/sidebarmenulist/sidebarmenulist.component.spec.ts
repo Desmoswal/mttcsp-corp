@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SidebarmenulistComponent } from './sidebarmenulist.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient } from '@angular/common/http';
 
 describe('SidebarmenulistComponent', () => {
   let component: SidebarmenulistComponent;
@@ -10,7 +11,7 @@ describe('SidebarmenulistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClient],
       declarations: [ SidebarmenulistComponent ]
     })
     .compileComponents();

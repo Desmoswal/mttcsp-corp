@@ -17,31 +17,33 @@ export class AdminjobsComponent implements OnInit {
   constructor(public jobService: JobService) { }
 
   public jobList: Job[] = [];
-  public gridDataSource = this.jobList;
-  public pageSettings: Object;
-  public editSettings: Object;
+  public pageSettings: Record<string,any>;
+  public editSettings: Record<string,any>;
   public toolbar: string[];
 
   ngOnInit(): void {
-    this.jobList = this.jobService.getAllJobs();
+    this.getAllJobs()
     this.pageSettings = { pageSizes: true, pageCount: 15 };
     this.editSettings = { allowEditing: true, /*allowAdding: true,*/allowDeleting: true, showDeleteConfirmDialog: true, showConfirmDialog: true, mode: 'Dialog' };
     this.toolbar = [/*'Add', */'Edit', 'Delete', 'Update', 'Cancel'];
   }
 
   onGridCreated(){
+    this.getAllJobs();
     this.grid.dataSource = this.jobList;
     this.grid.refresh();
   }
 
   getAllJobs()
   {
-    this.jobList = this.jobService.getAllJobs();
-    this.grid.dataSource = this.jobList;
+    this.jobService.getAllJobs().then(jobList => {
+      this.jobList = jobList
+    });
+    //this.grid.refresh()
   }
 
-  actionBegin(args: any) :void {
-    let gridInstance: any = (<any>document.getElementById('Grid')).ej2_instances[0];
+  actionBegin(args: any): void {
+    const gridInstance: any = (document.getElementById('Grid') as any).ej2_instances[0];
     console.log(args)
     if (args.requestType === 'save'){
       const newData = args.data;

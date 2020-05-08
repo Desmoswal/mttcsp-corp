@@ -13,9 +13,9 @@ export class FilemanagerComponent implements OnInit {
   }
 
 
-  public hostUrl: string = 'https://console.cloud.google.com/';
+  public hostUrl = 'https://console.cloud.google.com/';
   public ajaxSettings: object = {
-    url: this.hostUrl + 'storage/browser/mttcsp'
+    url: 'https://console.cloud.google.com/storage/browser/mttcsp/'
   };
 
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../job.service';
 import { Job } from '../../job.model';
+import { AuthService } from '../../auth.service';
+import { Employee } from '../../employee.model';
+import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-availablejobs',
@@ -9,45 +13,74 @@ import { Job } from '../../job.model';
 })
 export class AvailablejobsComponent implements OnInit {
 
-  constructor(public jobService: JobService) { }
+  constructor(public jobService: JobService, public authService: AuthService, private router: Router) { }
 
-  userLangs = ['Norwegian', "Dutch", 'English','Danish']
 
   ngOnInit(): void {
-    //this.getJobByEmployee();
+    this.getCurrentEmployee();
+    this.getAvailableJobs();
   }
 
   cellSpacing = [10,10]
 
   jobs: Job[]  = []
-  jobsForReview: Job[] = []
-  /*getAllJobs() {
-    this.jobs = this.jobService.getAllJobs();
-  }*/
+  currentUser: Employee;
+  userLangs = ['Norwegian', "Dutch", 'English','Danish']
 
   acceptJob(job: Job){
-    console.log(job)
+    this.jobService.setWorkspaceJob(job);
+    this.jobService.setIsReview(false);
+    const modifiedJob: Job = {
+      _id: job._id,
+      clientId: job.clientId,
+      folder: job.folder,
+      price: job.price,
+      sourceLang: job.sourceLang,
+      reqLang: job.reqLang,
+      status: 'IN PROGRESS',
+      employeeId: this.currentUser._id,
+      creationDate: job.creationDate,
+      startDate: this.getFormattedDate(),
+      completionDate: job.completionDate,
+      reviewBy: job.reviewBy
+    }
+    this.jobService.updateJob(modifiedJob)
+    this.router.navigate(['/workspace'])
   }
 
   getJobByEmployee(){
-    this.jobs = this.jobService.getJobByEmployee("5e9b21c62cd2752d18d6072d");
+    this.jobService.getJobsByEmployee(this.currentUser._id).then(jobList => {
+      this.jobs = jobList;
+    });
   }
 
   getAvailableJobs(){
-    const availableJobs = this.jobService.getAvailableJobs();
-    const filteredList = availableJobs.filter(job =>
-      this.userLangs.includes(job.reqLang)
-    )
-    this.jobs = filteredList.filter(job =>
-      this.userLangs.includes(job.sourceLang))
-    console.log(this.jobs)
+    this.jobService.getAvailableJobs().then(jobList => {
+      const filteredList = jobList.filter(job =>
+        this.userLangs.includes(job.reqLang));
+
+      this.jobs = filteredList.filter(job =>
+        this.userLangs.includes(job.sourceLang))
+        console.log('this jobs: ' + this.jobs)
+    });
   }
 
   getEmployeeHistory(){
-    this.jobs = this.jobService.getEmployeeJobHistory("5e9b21c62cd2752d18d6072d");
+    this.jobService.getEmployeeJobHistory(this.currentUser._id).then(jobList => {
+      this.jobs = jobList;
+    });
   }
 
-  getJobsForReview(){
-    this.jobsForReview = this.jobService.getJobsForReview();
+  getCurrentEmployee(){
+    this.currentUser = this.authService.getCurrentUser();
+    //this.userLangs = this.currentUser.languages;
+    console.log(this.userLangs)
   }
+
+  getFormattedDate(){
+    const pipe = new DatePipe('en-US');
+    const now = Date.now();
+    const formattedDate = pipe.transform(now, 'dd-MM-yyyy')
+    return formattedDate;
+   }
 }

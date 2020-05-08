@@ -4,7 +4,7 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -36,6 +36,7 @@ import { PdfViewerComponent,PdfViewerModule, LinkAnnotationService, BookmarkView
   NavigationService, AnnotationService, TextSearchService, TextSelectionService, PrintService, ToolbarService
 } from '@syncfusion/ej2-angular-pdfviewer';
 import { DocumentEditorModule, DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 import { AppComponent } from './app.component';
 import { SidebarmenulistComponent } from './sidebar/sidebarmenulist/sidebarmenulist.component';
@@ -49,6 +50,15 @@ import { WorkspaceComponent } from './employee/workspace/workspace.component';
 import { LanguagemanagementComponent } from './admin/languagemanagement/languagemanagement.component';
 import { AvailablejobsComponent } from './employee/availablejobs/availablejobs.component';
 import { JobhistoryComponent } from './employee/jobhistory/jobhistory.component';
+import { ChatComponent } from './chat/chat.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
+import { AuthInterceptor } from './auth-interceptor';
+import { LogoutComponent } from './logout/logout.component';
+import { EmployeedashboardComponent } from './employee/employeedashboard/employeedashboard.component';
+import { CurrentjobsComponent } from './employee/currentjobs/currentjobs.component';
+import { ReviewjobsComponent } from './employee/reviewjobs/reviewjobs.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -56,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent, AvailablejobsComponent, JobhistoryComponent,],
+  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent, AvailablejobsComponent, JobhistoryComponent, ChatComponent, LoginComponent, ProfileComponent, FieldErrorDisplayComponent, LogoutComponent, EmployeedashboardComponent, CurrentjobsComponent, ReviewjobsComponent,],
   imports: [
     BrowserModule,
     FormsModule,
@@ -94,9 +104,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DocumentEditorModule,
     DocumentEditorContainerModule,
     AccordionModule,
-    ChipListModule
+    ChipListModule,
+    DialogModule
   ],
-  providers: [PageService, SortService, FilterService, GroupService, ToolbarService, EditService, LineSeriesService, LegendService, TooltipService, DataLabelService, CategoryService, StepLineSeriesService, SplineSeriesService, StackingLineSeriesService, DateTimeService,
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, PageService, SortService, FilterService, GroupService, ToolbarService, EditService, LineSeriesService, LegendService, TooltipService, DataLabelService, CategoryService, StepLineSeriesService, SplineSeriesService, StackingLineSeriesService, DateTimeService,
     SplineAreaSeriesService, MultiColoredLineSeriesService, ParetoSeriesService, ColumnSeriesService, PieSeriesService, AccumulationLegendService, AccumulationTooltipService, AccumulationAnnotationService,
     AccumulationDataLabelService, LinkAnnotationService, BookmarkViewService, MagnificationService, ThumbnailViewService,
     NavigationService, AnnotationService, TextSearchService, TextSelectionService, PrintService],

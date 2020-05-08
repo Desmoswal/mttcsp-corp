@@ -1,4 +1,5 @@
-<div class="accordion-container">
+<p *ngIf="!activeJob">No current jobs.</p>
+<div class="accordion-container" *ngIf="activeJob">
   <ejs-accordion>
     <e-accordionitems>
       <e-accordionitem expanded='false'>
@@ -6,16 +7,16 @@
           <div>Current Job Info</div>
         </ng-template>
         <ng-template #content>
-          <p>ID:</p>
-          <p>Source Language:</p>
-          <p>Requested Language:</p>
-          <p>Request Date:</p>
+          <p>ID: {{activeJob._id}}</p>
+          <p>Source Language: {{activeJob.sourceLang}}</p>
+          <p>Requested Language: {{activeJob.reqLang}}</p>
+          <p>Request Date: {{activeJob.creationDate}}</p>
         </ng-template>
       </e-accordionitem>
     </e-accordionitems>
   </ejs-accordion>
 </div>
-<div id='container' class="workspace">
+<div id='container' class="workspace" *ngIf='activeJob'>
   <ejs-splitter #horizontal height='1200px' width='100%' >
     <e-panes>
         <e-pane>
@@ -40,3 +41,4 @@
   </ejs-splitter>
 </div>
 
+<button ejs-button cssClass="e-success" (click)='doneJob()' *ngIf='activeJob'>DONE</button>

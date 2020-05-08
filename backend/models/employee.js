@@ -29,7 +29,7 @@ employeeSchema.pre("save", async function(next) {
   }
 });
 
-/*
+
 employeeSchema.methods.isPasswordValid = async function(inputPassword) {
   try {
     console.log(await bcrypt.compare(inputPassword, this.password));
@@ -37,7 +37,7 @@ employeeSchema.methods.isPasswordValid = async function(inputPassword) {
   } catch (error) {
     throw new Error(error);
   }
-};*/
+};
 
 employeeSchema.plugin(uniqueValidator);
 

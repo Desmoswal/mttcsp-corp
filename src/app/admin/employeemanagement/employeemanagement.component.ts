@@ -25,15 +25,14 @@ export class EmployeemanagementComponent implements OnInit {
 
   public employeeList: Employee[] = [];
   public languageList: Language[] = [];
-  public pageSettings: Object;
-  public editSettings: Object;
+  public pageSettings: Record<string, any>;
+  public editSettings: Record<string, any>;
   public toolbar: string[];
-  public gridDataSource = this.employeeList;
 
   public dropData: string[];
 
   ngOnInit(): void {
-    this.employeeList = this.employeeService.getAllEmployees();
+    this.getAllEmployees()
     this.pageSettings = { pageSizes: true, pageCount: 15 };
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, showDeleteConfirmDialog: true, showConfirmDialog: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
@@ -41,18 +40,22 @@ export class EmployeemanagementComponent implements OnInit {
   }
 
   onGridCreated(){
-    this.grid.dataSource = this.employeeList;
+    this.getAllEmployees()
+    this.grid.dataSource = this.employeeList
     this.grid.refresh();
   }
+
   getAllEmployees()
   {
-    this.employeeList = this.employeeService.getAllEmployees();
-    this.grid.dataSource = this.employeeList;
+    this.employeeService.getAllEmployees().then(employeeList => {
+      this.employeeList = employeeList
+    });
+    //this.grid.refresh()
   }
 
 
-  actionBegin(args: any) :void {
-    let gridInstance: any = (<any>document.getElementById('Grid')).ej2_instances[0];
+  actionBegin(args: any): void {
+    const gridInstance: any = (document.getElementById('Grid') as any).ej2_instances[0];
     console.log(args)
     if (args.requestType === 'save'){
       const newData = args.data;
@@ -110,11 +113,11 @@ export class EmployeemanagementComponent implements OnInit {
         dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']).where(predicate);
     }
     new DataManager(this.employeeList).executeQuery(dataManagerQuery).then((e: ReturnOption) => {
-            (<Object[]>e.result).forEach((data: Employee) => {
+            (e.result as Record<string,any>).forEach((data: Employee) => {
                 fltrDataSource.push(data);
             });
         });
-    this.gridDataSource = fltrDataSource;
+    this.grid.dataSource = fltrDataSource;
     this.grid.refresh();
   }
 

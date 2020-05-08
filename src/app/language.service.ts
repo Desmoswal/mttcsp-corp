@@ -33,13 +33,16 @@ export class LanguageService {
   }
 
   getAllLanguages() {
-    ipcRenderer.send('async-langauge-get-all');
-    ipcRenderer.on('async-langauge-get-all-reply', (event, arg) => {
-      this.languageList = [];
-      arg.forEach(element => {
-        this.languageList.push(element);
-      });
+    const promise = new Promise<Language[]>((resolve,reject) => {
+      ipcRenderer.send('async-langauge-get-all');
+      ipcRenderer.on('async-langauge-get-all-reply', (event, arg) => {
+        this.languageList = [];
+        arg.forEach(element => {
+          this.languageList.push(element);
+        });
+        resolve(this.languageList)
+      })
     })
-    return this.languageList;
+    return promise;
   }
 }

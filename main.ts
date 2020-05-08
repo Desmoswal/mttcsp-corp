@@ -5,6 +5,7 @@ const dbservice = require('./backend/services/databaseservice.js')
 const employee = require('./backend/services/employeeservice.js')
 const language = require('./backend/services/languageservice.js')
 const job = require('./backend/services/jobservice.js')
+const gc = require('./backend/services/googleservice.js')
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -13,7 +14,7 @@ const args = process.argv.slice(1),
 
 let tray
 
-let trayMenu = Menu.buildFromTemplate([
+const trayMenu = Menu.buildFromTemplate([
   {label: 'asd'},
   {type: "separator"},
   {role: 'quit'}

@@ -12,7 +12,8 @@ const jobSchema = mongoose.Schema({
   employeeId: {type: String},
   creationDate: { type: String },
   startDate: { type: String },
-  completionDate: { type: String }
+  completionDate: { type: String },
+  reviewBy: {type: String}
 });
 
 

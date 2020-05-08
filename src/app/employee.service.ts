@@ -12,14 +12,14 @@ export class EmployeeService {
 
   createEmployee(newEmployee: Employee){
     ipcRenderer.send('async-employee-create', newEmployee)
-    ipcRenderer.on('async-employee-create-reply', (event, arg) => {
+    ipcRenderer.once('async-employee-create-reply', (event, arg) => {
       console.log(arg)
     })
   }
 
   updateEmployee(modifiedEmployee: Employee) {
     ipcRenderer.send('async-employee-update', modifiedEmployee)
-    ipcRenderer.on('async-employee-update-reply', (event, arg) => {
+    ipcRenderer.once('async-employee-update-reply', (event, arg) => {
       console.log(arg)
     })
   }
@@ -29,20 +29,24 @@ export class EmployeeService {
       id: employeeId
     }
     ipcRenderer.send('async-employee-remove', employeeData)
-    ipcRenderer.on('async-employee-remove-reply', (event, arg) => {
+    ipcRenderer.once('async-employee-remove-reply', (event, arg) => {
       console.log(arg)
     })
   }
 
   getAllEmployees() {
-    ipcRenderer.send('async-employee-get-all');
-    ipcRenderer.on('async-employee-get-all-reply',(event, arg) =>{
-      this.employeeList = [];
-      console.log(arg)
-      arg.forEach(element => {
-        this.employeeList.push(element);
-      });
+    const promise = new Promise<Employee[]>((resolve, reject)=> {
+
+      ipcRenderer.send('async-employee-get-all');
+      ipcRenderer.once('async-employee-get-all-reply',(event, arg) =>{
+        this.employeeList = [];
+        console.log(arg)
+        arg.forEach(element => {
+          this.employeeList.push(element);
+        });
+        resolve(this.employeeList)
+      })
     })
-    return this.employeeList;
+    return promise;
   }
 }
