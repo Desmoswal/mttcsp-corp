@@ -1,4 +1,4 @@
-<div class="col-lg-12 control-section">
+<div class="col-lg-12 control-section container">
   <div class="content-wrapper">
     <ejs-grid id="Grid" #grid [dataSource]="languageList" [allowSorting]='true' [allowSelection]="true" [allowPaging]="true" [pageSettings]="pageSettings" width="100%" [editSettings]="editSettings" [toolbar]="toolbar" (actionBegin)='actionBegin($event)' (created)="onGridCreated()">
       <e-columns>
@@ -9,4 +9,3 @@
     </ejs-grid>
   </div>
 </div>
-<button (click)="getAllLanguages()">GetLanguages</button>

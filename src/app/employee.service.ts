@@ -49,4 +49,21 @@ export class EmployeeService {
     })
     return promise;
   }
+
+  getEmployeeById(employeeId: string){
+    const employeeData = {
+      id: employeeId
+    }
+    const promise = new Promise<Employee[]>((resolve, reject)=> {
+      ipcRenderer.send('async-employee-get-by-id', employeeData)
+      ipcRenderer.once('async-employee-get-by-id-reply', (event,arg)=> {
+        this.employeeList = [];
+        arg.forEach(element => {
+          this.employeeList.push(element)
+        });
+        resolve(this.employeeList)
+      })
+    })
+    return promise;
+  }
 }

@@ -37,6 +37,9 @@ import { PdfViewerComponent,PdfViewerModule, LinkAnnotationService, BookmarkView
 } from '@syncfusion/ej2-angular-pdfviewer';
 import { DocumentEditorModule, DocumentEditorContainerModule } from '@syncfusion/ej2-angular-documenteditor';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { CircularGaugeModule } from '@syncfusion/ej2-angular-circulargauge';
+import { LinearGaugeModule } from '@syncfusion/ej2-angular-lineargauge';
+import { ToastModule } from '@syncfusion/ej2-angular-notifications';
 
 import { AppComponent } from './app.component';
 import { SidebarmenulistComponent } from './sidebar/sidebarmenulist/sidebarmenulist.component';
@@ -57,8 +60,11 @@ import { FieldErrorDisplayComponent } from './field-error-display/field-error-di
 import { AuthInterceptor } from './auth-interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { EmployeedashboardComponent } from './employee/employeedashboard/employeedashboard.component';
-import { CurrentjobsComponent } from './employee/currentjobs/currentjobs.component';
 import { ReviewjobsComponent } from './employee/reviewjobs/reviewjobs.component';
+import { TopemployeesComponent } from './admin/statistics/topemployees/topemployees.component';
+import { LanguagestatisticsComponent } from './admin/statistics/languagestatistics/languagestatistics.component';
+import { JobstatisticsComponent } from './admin/statistics/jobstatistics/jobstatistics.component';
+import { ManagementComponent } from './admin/management/management.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -66,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent, AvailablejobsComponent, JobhistoryComponent, ChatComponent, LoginComponent, ProfileComponent, FieldErrorDisplayComponent, LogoutComponent, EmployeedashboardComponent, CurrentjobsComponent, ReviewjobsComponent,],
+  declarations: [AppComponent, SidebarmenulistComponent, SidebaruserComponent, AdmindashboardComponent, EmployeemanagementComponent, AdminjobsComponent, AdminstatisticsComponent, FilemanagerComponent, WorkspaceComponent, LanguagemanagementComponent, AvailablejobsComponent, JobhistoryComponent, ChatComponent, LoginComponent, ProfileComponent, FieldErrorDisplayComponent, LogoutComponent, EmployeedashboardComponent, ReviewjobsComponent, TopemployeesComponent, LanguagestatisticsComponent, JobstatisticsComponent, ManagementComponent, ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -105,7 +111,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DocumentEditorContainerModule,
     AccordionModule,
     ChipListModule,
-    DialogModule
+    DialogModule,
+    CircularGaugeModule,
+    LinearGaugeModule,
+    ToastModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, PageService, SortService, FilterService, GroupService, ToolbarService, EditService, LineSeriesService, LegendService, TooltipService, DataLabelService, CategoryService, StepLineSeriesService, SplineSeriesService, StackingLineSeriesService, DateTimeService,

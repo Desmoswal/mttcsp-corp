@@ -1,13 +1,18 @@
-<ejs-sidebar id="default-sidebar" #sidebar (created)="onCreated($event)" style="visibility: hidden;" [animate]="true" [enableRtl]="false">
-  <app-sidebaruser></app-sidebaruser>
-  <app-sidebarmenulist></app-sidebarmenulist>
-  <div class="center-align" style="margin-top: 15px;">
+<div *ngIf='!isUserAuthenticated'>
+  <app-login></app-login>
+</div>
+<div *ngIf="isUserAuthenticated">
+  <ejs-sidebar id="default-sidebar" #sidebar (created)="onCreated($event)" style="visibility: hidden;" [animate]="true" [enableRtl]="false">
+    <app-sidebaruser></app-sidebaruser>
+    <app-sidebarmenulist></app-sidebarmenulist>
+    <div class="center-align" style="margin-top: 15px;">
       <button ejs-button id="close" (click)="closeClick()" class="e-btn close-btn" style="width: 200px;">Close Sidebar</button>
+    </div>
+  </ejs-sidebar>
+  <div>
+    <ejs-menu [items]="menuItems" (select)='select($event)'></ejs-menu>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
   </div>
-</ejs-sidebar>
-<div>
-  <ejs-menu [items]="menuItems" (select)='select($event)'></ejs-menu>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
 </div>

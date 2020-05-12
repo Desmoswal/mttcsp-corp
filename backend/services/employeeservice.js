@@ -170,9 +170,26 @@ ipcMain.on('async-employee-get-all', (event, arg) => {
 })
 
 ipcMain.on('async-employee-get-by-id', (event, arg) => {
-  Employee.find(arg._id).then(result => {
-    //console.log(result)
-    event.reply('async-employee-get-by-id-reply', result);
+  Employee.find({_id: arg.id}).then(result => {
+    const employeeList = []
+    result.forEach(element => {
+      const employee = {
+        _id: element._id.toString(),
+        firstName: element.firstName,
+        lastName: element.lastName,
+        email: element.email,
+        password: element.password,
+        address: element.address,
+        city: element.city,
+        country: element.country,
+        zip: element.zip,
+        role: element.role,
+        profilePic: element.profilePic,
+        languages: element.languages
+      }
+      employeeList.push(employee)
+    })
+    event.reply('async-employee-get-by-id-reply', employeeList);
   }).catch(error => {
     event.reply('async-employee-get-by-id-reply', error.message);
   })

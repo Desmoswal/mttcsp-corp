@@ -1,0 +1,5 @@
+const dbservice = require('./databaseservice.js')
+const employee = require('./employeeservice.js')
+const language = require('./languageservice.js')
+const job = require('./jobservice.js')
+const gc = require('./googleservice.js')

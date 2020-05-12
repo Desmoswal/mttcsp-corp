@@ -1,21 +1,17 @@
 import { app, BrowserWindow, screen, ipcMain, Tray, Menu } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-const dbservice = require('./backend/services/databaseservice.js')
-const employee = require('./backend/services/employeeservice.js')
-const language = require('./backend/services/languageservice.js')
-const job = require('./backend/services/jobservice.js')
-const gc = require('./backend/services/googleservice.js')
+const serviceConnector = require('./backend/services/service-connector.js')
 
 let win: BrowserWindow = null;
+
 const args = process.argv.slice(1),
     serve = args.some(val => val === '--serve');
-
 
 let tray
 
 const trayMenu = Menu.buildFromTemplate([
-  {label: 'asd'},
+  {label: 'Menu Item', type: 'normal', role: 'windowMenu'},
   {type: "separator"},
   {role: 'quit'}
 ])
@@ -55,15 +51,11 @@ function createWindow(): BrowserWindow {
     },
   });
 
-  dbservice.connect();
-
-
-
   if (serve) {
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
-    win.loadURL('http://localhost:4200');
+    win.loadURL('http://localhost:4200/');
   } else {
     win.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),

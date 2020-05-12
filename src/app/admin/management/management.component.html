@@ -1,32 +1,32 @@
 <div class="control-section">
   <ejs-dashboardlayout id='default_dashboard' columns="5" #default_dashboard [cellSpacing]='cellSpacing'  [allowResizing]='false'>
-    <div id="one" class="e-panel" data-row="0" data-col="0" data-sizeX="5" data-sizeY="1">
+    <div id="one" class="e-panel" data-row="0" data-col="0" data-sizeX="5" data-sizeY="3">
       <div class="header">
-        <p>Job Statistics</p>
+        <p>Job Management</p>
       </div>
       <div class="e-panel-container">
         <div class="text-align">
-          <app-jobstatistics></app-jobstatistics>
+          <app-adminjobs></app-adminjobs>
         </div>
       </div>
     </div>
-    <div id="two" class="e-panel" data-row="1" data-col="0" data-sizeX="5" data-sizeY="2">
+    <div id="two" class="e-panel" data-row="3" data-col="0" data-sizeX="5" data-sizeY="3">
       <div class="header">
-        <p>Language Statistics</p>
+        <p>Language Management</p>
       </div>
       <div class="e-panel-container">
         <div class="text-align">
-          <app-languagestatistics></app-languagestatistics>
+          <app-languagemanagement></app-languagemanagement>
         </div>
       </div>
     </div>
-    <div id="three" class="e-panel" data-row="3" data-col="0" data-sizeX="5" data-sizeY="2">
+    <div id="three" class="e-panel" data-row="6" data-col="0" data-sizeX="5" data-sizeY="3">
       <div class="header">
-        <p>Employee Statistics</p>
+        <p>Employee Management</p>
       </div>
       <div class="e-panel-container">
         <div class="text-align">
-          <app-topemployees></app-topemployees>
+          <app-employeemanagement></app-employeemanagement>
         </div>
       </div>
     </div>

@@ -13,24 +13,24 @@ import { ChatComponent } from './chat/chat.component';
 import { AvailablejobsComponent } from './employee/availablejobs/availablejobs.component';
 import { JobhistoryComponent } from './employee/jobhistory/jobhistory.component';
 import { EmployeedashboardComponent } from './employee/employeedashboard/employeedashboard.component';
-import { CurrentjobsComponent } from './employee/currentjobs/currentjobs.component';
 import { WorkspaceComponent } from './employee/workspace/workspace.component';
+import { ManagementComponent } from './admin/management/management.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'admindashboard', component: AdmindashboardComponent, canActivate: [AuthGuard]},
-  { path: 'adminjobs', component: AdminjobsComponent},
-  { path: 'adminstatistics', component: AdminstatisticsComponent},
-  { path: 'employeemanagement', component: EmployeemanagementComponent},
-  { path: 'employeedashboard', component: EmployeedashboardComponent},
-  { path: 'availablejobs', component: AvailablejobsComponent},
-  { path: 'currentjobs', component: CurrentjobsComponent},
-  { path: 'jobhistory', component: JobhistoryComponent},
-  { path: 'workspace', component: WorkspaceComponent},
-  { path: 'chat', component: ChatComponent},
+  { path: 'adminmanagement', component: ManagementComponent, canActivate: [AuthGuard]},
+  { path: 'adminjobs', component: AdminjobsComponent, canActivate: [AuthGuard]},
+  { path: 'adminstatistics', component: AdminstatisticsComponent, canActivate: [AuthGuard]},
+  { path: 'employeemanagement', component: EmployeemanagementComponent, canActivate: [AuthGuard]},
+  { path: 'employeedashboard', component: EmployeedashboardComponent, canActivate: [AuthGuard]},
+  { path: 'availablejobs', component: AvailablejobsComponent, canActivate: [AuthGuard]},
+  { path: 'jobhistory', component: JobhistoryComponent, canActivate: [AuthGuard]},
+  { path: 'workspace', component: WorkspaceComponent, canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: '**', component: PageNotFoundComponent }
+  //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

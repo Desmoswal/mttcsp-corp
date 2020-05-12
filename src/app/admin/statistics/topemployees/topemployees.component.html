@@ -1,0 +1,13 @@
+<div class="containerDiv">
+  <ejs-accumulationchart id="container5" #pieChart  [legendSettings]="legendSettings" [title]="title" [enableAnimation]= 'true' [tooltip]="tooltip">
+    <e-accumulation-series-collection>
+        <e-accumulation-series [dataSource]='piedata' xName='x' yName='y' [startAngle]="startAngle" [endAngle]="endAngle" innerRadius="0%" radius="70%" [explode]='explode' explodeOffset='10%' >
+        </e-accumulation-series>
+    </e-accumulation-series-collection>
+  </ejs-accumulationchart>
+  <div>
+    <p>Number of employees</p>
+    <input type="range" name="range-min" min="1" max="10" (change)='sliderChange($event)' autocomplete="off" id="pieslider" style="margin-left: 5px">
+    <p class="employeeNumber">{{numberOfEmployees}}</p>
+  </div>
+</div>

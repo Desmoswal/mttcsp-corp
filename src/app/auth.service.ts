@@ -43,8 +43,6 @@ export class AuthService {
   }
 
   getCurrentUser(){
-    console.log('currentuser:')
-    console.log(this.currentUser)
     return this.currentUser;
   }
 
@@ -68,7 +66,7 @@ export class AuthService {
           this.authStatusListener.next(true);
           const expirationDate = new Date(decodedtoken.exp);// expiresInDuration * 1000);
           this.saveAuthData(this.token, expirationDate, this.userId);
-          this.router.navigate(["/profile"]);
+          this.router.navigate(["/employeedashboard"]);
           this.getUserProfile();
           this.chatLogin(authData.email, authData.password)
         }
@@ -93,8 +91,6 @@ export class AuthService {
   getUserProfile(): Employee{
     this.currentUser = new Employee;
     this.http.get<{user: Employee}>("http://localhost:3000/profile").subscribe(response => {
-      console.log('AUTH SERVICE PROFILE:')
-      console.log(response.user);
       this.currentUser._id = response.user._id;
       this.currentUser.firstName = response.user.firstName;
       this.currentUser.lastName = response.user.lastName;

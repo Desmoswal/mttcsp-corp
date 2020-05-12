@@ -36,9 +36,9 @@
       <e-column field="role" headerText="Role" type="string"></e-column>
       <e-column field="languages" headerText="Languanges" type="array">
         <ng-template #template let-data >
-        <div>
-          <ejs-chiplist id="chip" selection="Multiple" *ngFor="let lang of data.languages" >
-            <e-chips >
+        <div class="container">
+          <ejs-chiplist id="chip" *ngFor="let lang of data.languages">
+            <e-chips>
                 <e-chip text="{{lang}}" cssClass="e-primary"></e-chip>
             </e-chips>
         </ejs-chiplist>
@@ -49,13 +49,3 @@
     </ejs-grid>
   </div>
 </div>
-<button (click)="getAllEmployees()">GetEmployees</button>
-<ejs-chiplist id="chip" selection="Multiple">
-        <e-chips>
-            <e-chip text="Primary" cssClass="e-primary"></e-chip>
-            <e-chip text="Success" cssClass="e-success"></e-chip>
-            <e-chip text="Info" cssClass="e-info"></e-chip>
-            <e-chip text="Warning" cssClass="e-warning"></e-chip>
-             <e-chip text="Danger" cssClass="e-danger"></e-chip>
-        </e-chips>
-    </ejs-chiplist>

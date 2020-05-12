@@ -3,6 +3,8 @@ import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 import { SidebarComponent, MenuItemModel, MenuEventArgs } from '@syncfusion/ej2-angular-navigations';
+import { AuthService } from './auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +12,12 @@ import { SidebarComponent, MenuItemModel, MenuEventArgs } from '@syncfusion/ej2-
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private authListenerSubs: Subscription
+  isUserAuthenticated = false
   constructor(
     public electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private authService: AuthService
   ) {
     translate.setDefaultLang('en');
     console.log('AppConfig', AppConfig);
@@ -25,6 +30,10 @@ export class AppComponent {
     } else {
       console.log('Mode web');
     }
+    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+      this.isUserAuthenticated = isAuthenticated;
+      console.log(isAuthenticated)
+    })
   }
 
   @ViewChild('sidebar') sidebar: SidebarComponent;

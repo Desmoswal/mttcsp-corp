@@ -22,43 +22,28 @@ export class SidebarmenulistComponent implements OnInit {
     return value.type != 'Admin'
   }
 
-  public badge = {
-    Dashboard: 3,
-    Jobs: 27,
-    AvailableJobs: 7,
-    Updates: 13,
-    Important: 2,
-    Drafts: 7
-}
-
-setMenuItems(){
-  if(this.currentUser.role == 'Admin'){
-    this.dataSource = this.dataSource.filter(this.adminFilter)
-  }
-}
-// Datasource for listview, badge field is the class data for Badges
-public dataSource: { [key: string]: Object }[] = [
-    { id: 'p_01', text: 'Admin Dashboard', badge: 'e-badge e-badge-primary', icons: 'primary', type: 'Admin', link: 'admindashboard' },
-    { id: 'p_02', text: 'Jobs', badge: 'e-badge e-badge-secondary', icons: 'social', type: 'Admin', link: 'adminjobs' },
-    { id: 'p_03', text: 'Employees', badge: 'e-badge e-badge-success', icons: 'promotion', type: 'Admin', link: 'employeemanagement' },
-    { id: 'p_04', text: 'Statistics', badge: 'e-badge e-badge-info', icons: 'updates', type: 'Admin', link: 'adminstatistics' },
-    { id: 'p_05', text: 'Dashboard', badge: '', icons: 'starred', type: 'User', link: 'employeedashboard' },
-    { id: 'p_06', text: 'Workspace', badge: 'e-badge e-badge-danger', icons: 'important', type: 'User', link: 'workspace' },
-    //{ id: 'p_07', text: 'Current Jobs', badge: '', icons: 'sent', type: 'User', link: 'currentjobs' },
-    { id: 'p_08', text: 'Job History', badge: '', icons: 'outbox', type: 'User', link: 'jobhistory' },
-    { id: 'p_09', text: 'Chat', badge: 'e-badge e-badge-warning', icons: 'draft', type: 'User', link: 'chat' },
-    { id: 'p_10', text: 'Logout', badge: 'e-badge e-badge-warning', icons: 'draft', type: 'User', link: 'logout' },
-];
-
-// Map fields
-public fields: object = { groupBy: 'type' };
-
-public onClick() {
-    let badgeKeys = Object.keys(this.badge);
-    for (let badge of badgeKeys) {
-        this.badge[badge]++;
+  setMenuItems(){
+    if(this.currentUser.role == 'Admin'){
+      this.dataSource = this.dataSource.filter(this.adminFilter)
     }
   }
+
+  public dataSource: { [key: string]: Object }[] = [
+      { id: 'p_01', text: 'Admin Dashboard', icons: 'primary', type: 'Admin', link: 'admindashboard' },
+      { id: 'p_02', text: 'Management', type: 'Admin', link: 'adminmanagement'},
+      //{ id: 'p_02', text: 'Jobs', badge: 'e-badge e-badge-secondary', icons: 'social', type: 'Admin', link: 'adminjobs' },
+      //{ id: 'p_03', text: 'Employees', badge: 'e-badge e-badge-success', icons: 'promotion', type: 'Admin', link: 'employeemanagement' },
+      { id: 'p_04', text: 'Statistics',  icons: 'updates', type: 'Admin', link: 'adminstatistics' },
+      { id: 'p_05', text: 'Dashboard', icons: 'starred', type: 'User', link: 'employeedashboard' },
+      { id: 'p_06', text: 'Workspace', icons: 'important', type: 'User', link: 'workspace' },
+      //{ id: 'p_07', text: 'Current Jobs', badge: '', icons: 'sent', type: 'User', link: 'currentjobs' },
+      { id: 'p_08', text: 'Job History', icons: 'outbox', type: 'User', link: 'jobhistory' },
+      { id: 'p_09', text: 'Chat', icons: 'draft', type: 'User', link: 'chat' },
+      { id: 'p_10', text: 'Logout', icons: 'draft', type: 'User', link: 'logout' },
+  ];
+
+  // Map fields
+  public fields: object = { groupBy: 'type' };
 
   public selected(args: any)
   {
