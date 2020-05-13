@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeedashboardComponent } from './employeedashboard.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EmployeedashboardComponent', () => {
   let component: EmployeedashboardComponent;
@@ -10,7 +11,7 @@ describe('EmployeedashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [ EmployeedashboardComponent ]
     })
     .compileComponents();

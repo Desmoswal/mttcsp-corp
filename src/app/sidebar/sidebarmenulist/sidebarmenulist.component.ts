@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../../employee.model';
 import { AuthService } from '../../auth.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-sidebarmenulist',
@@ -18,14 +19,15 @@ export class SidebarmenulistComponent implements OnInit {
     this.setMenuItems()
   }
 
-  adminFilter(value) {
-    return value.type != 'Admin'
-  }
 
   setMenuItems(){
-    if(this.currentUser.role == 'Admin'){
+    if(!isNullOrUndefined(this.currentUser) && this.currentUser.role == 'Admin'){
       this.dataSource = this.dataSource.filter(this.adminFilter)
     }
+  }
+
+  adminFilter(value) {
+    return value.type != 'Admin'
   }
 
   public dataSource: { [key: string]: Object }[] = [

@@ -7,8 +7,8 @@ import { AccumulationChartComponent, AccumulationChart, IAccLoadedEventArgs, Acc
 
 
 interface ArrayGroup {
-  key?: string
-  values: Array<Object>
+  key?: string;
+  values: Array<Record<string,any>>;
 }
 
 
@@ -32,7 +32,7 @@ export class TopemployeesComponent implements OnInit {
   public endAngle: number;
   public explode: boolean ;
   public enableAnimation: boolean ;
-  numberOfEmployees: number = 10;
+  numberOfEmployees = 10;
 
   @ViewChild('pieChart')
     public pie: AccumulationChartComponent | AccumulationChart;
@@ -103,8 +103,8 @@ export class TopemployeesComponent implements OnInit {
 
   groupByArray(xs, key) {
     return xs.reduce(function (rv, x) {
-      let v = key instanceof Function ? key(x) : x[key];
-      let el = rv.find((r) => r && r.key === v);
+      const v = key instanceof Function ? key(x) : x[key];
+      const el = rv.find((r) => r && r.key === v);
       if (el) {
         el.values.push(x);
       } else {

@@ -91,6 +91,8 @@ export class AuthService {
   getUserProfile(): Employee{
     this.currentUser = new Employee;
     this.http.get<{user: Employee}>("http://localhost:3000/profile").subscribe(response => {
+      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA')
+      console.log(response)
       this.currentUser._id = response.user._id;
       this.currentUser.firstName = response.user.firstName;
       this.currentUser.lastName = response.user.lastName;

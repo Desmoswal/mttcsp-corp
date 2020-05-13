@@ -11,8 +11,6 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('formDialog') formDialog: DialogComponent;
-
   constructor(@Inject(FormBuilder) public formBuilder: FormBuilder, public authService: AuthService) {}
 
   public form: FormGroup;
@@ -33,7 +31,6 @@ export class LoginComponent implements OnInit {
       console.log(this.form.value.username)
       console.log(this.form.value.password)
       this.authService.login(this.form.value.username, this.form.value.password)
-      this.formDialog.hide();
       this.form.reset();
     } else {
       this.validateAllFormFields(this.form);
@@ -46,14 +43,9 @@ export class LoginComponent implements OnInit {
       username: [null, Validators.required],
       password: [null, Validators.required]
     });
-    this.initilaizeTarget()
-    this.formDialog.show()
   }
   @ViewChild('container', { read: ElementRef }) container: ElementRef;
   public targetElement: HTMLElement;
-  public initilaizeTarget: EmitType<object> = () => {
-    this.targetElement = this.container.nativeElement.parentElement;
-  }
 
   isFieldValid(field: string) {
     return ((!this.form.get(field).valid && this.form.get(field).touched) ||

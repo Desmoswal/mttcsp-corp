@@ -4,6 +4,7 @@ import { JobService } from '../../job.service';
 import { Employee } from '../../employee.model';
 import { AuthService } from '../../auth.service';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-jobhistory',
@@ -28,9 +29,11 @@ export class JobhistoryComponent implements OnInit {
   employee: Employee
 
   getJobHistory(){
-    this.jobService.getEmployeeJobHistory(this.employee._id).then(jobList => {
-      this.jobHistory = jobList;
-    })
+    if(!isNullOrUndefined(this.employee)){
+      this.jobService.getEmployeeJobHistory(this.employee._id).then(jobList => {
+        this.jobHistory = jobList;
+      })
+    }
   }
 
   getCurrentEmployee(){

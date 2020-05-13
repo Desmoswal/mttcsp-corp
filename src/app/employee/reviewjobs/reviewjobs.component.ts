@@ -4,6 +4,7 @@ import { Job } from '../../job.model';
 import { Employee } from '../../employee.model';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-reviewjobs',
@@ -35,7 +36,9 @@ export class ReviewjobsComponent implements OnInit {
 
   getCurrentEmployee(){
     this.currentUser = this.authService.getCurrentUser();
-    this.userLangs = this.currentUser.languages;
+
+    if(!isNullOrUndefined(this.currentUser))
+      this.userLangs = this.currentUser.languages;
   }
 
   acceptJob(job: Job){

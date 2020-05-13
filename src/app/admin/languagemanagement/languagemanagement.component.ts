@@ -15,7 +15,6 @@ export class LanguagemanagementComponent implements OnInit {
   constructor(public lanugageService: LanguageService) { }
 
   public languageList: Language[] = [];
-  public gridDataSource = this.languageList;
   public pageSettings: Record<string, any>;
   public editSettings: Record<string, any>;
   public toolbar: string[];

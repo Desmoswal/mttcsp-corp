@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LanguageService } from '../../../language.service';
 import { Language } from '../../../language.model';
 import { JobService } from '../../../job.service';
@@ -6,8 +6,8 @@ import { Job } from '../../../job.model';
 import { AccumulationChartComponent, AccumulationChart } from '@syncfusion/ej2-angular-charts';
 
 interface ArrayGroup {
-  key?: string
-  values: Array<Object>
+  key?: string;
+  values: Array<Record<string,any>>;
 }
 
 @Component({
@@ -90,8 +90,8 @@ export class LanguagestatisticsComponent implements OnInit {
 
   groupByArray(xs, key) {
     return xs.reduce(function (rv, x) {
-      let v = key instanceof Function ? key(x) : x[key];
-      let el = rv.find((r) => r && r.key === v);
+      const v = key instanceof Function ? key(x) : x[key];
+      const el = rv.find((r) => r && r.key === v);
       if (el) {
         el.values.push(x);
       } else {

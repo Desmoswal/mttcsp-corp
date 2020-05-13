@@ -34,7 +34,8 @@ export class WorkspaceComponent implements OnInit {
   public document = ''
 
   createDirectory(){
-    this.jobService.createJobDirectory(this.activeJob.folder)
+    if(this.activeJob)
+      this.jobService.createJobDirectory(this.activeJob.folder)
   }
 
   deleteDirectory(){
@@ -42,7 +43,8 @@ export class WorkspaceComponent implements OnInit {
   }
 
   getFiles(){
-    this.jobService.getJobFiles(this.activeJob.folder)
+    if(this.activeJob)
+      this.jobService.getJobFiles(this.activeJob.folder)
   }
 
   doneJob(){

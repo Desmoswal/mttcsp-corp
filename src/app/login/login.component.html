@@ -1,27 +1,29 @@
-<ejs-dialog header="Login" id="reactDialog" #formDialog target='.control-section' isModal='true' [animationSettings]='animationSettings' [target]='targetElement'>
-  <form id="reactive" [formGroup]="form">
+<div #container>
+  <ejs-dialog header="Login" id="reactDialog" #formDialog target='.control-section' isModal='true' [animationSettings]='animationSettings' [target]='targetElement'>
+    <form id="reactive" [formGroup]="form">
       <div class="form-group">
-          <div class="e-float-input">
-              <input type="text" id="username" name="username" class="required" formControlName="username">
-              <span class="e-float-line"></span>
-              <label class="e-float-text e-label-top" for="username">Username</label>
-          </div>
-          <app-field-error-display [displayError]="isFieldValid('username')" errorMsg="* Please enter your username">
-          </app-field-error-display>
+        <div class="e-float-input">
+          <input type="text" id="username" name="username" class="required" formControlName="username">
+          <span class="e-float-line"></span>
+          <label class="e-float-text e-label-top" for="username">Username</label>
+        </div>
+        <app-field-error-display [displayError]="isFieldValid('username')" errorMsg="* Please enter your username">
+        </app-field-error-display>
       </div>
       <div class="form-group">
-          <div class="e-float-input">
-              <input type="text" id="password" name="password" class="required" formControlName="password">
-              <span class="e-float-line"></span>
-              <label class="e-float-text e-label-top" for="password">Password</label>
-          </div>
-          <app-field-error-display [displayError]="isFieldValid('password')" errorMsg="* Please enter your password">
-          </app-field-error-display>
+        <div class="e-float-input">
+          <input type="text" id="password" name="password" class="required" formControlName="password">
+          <span class="e-float-line"></span>
+          <label class="e-float-text e-label-top" for="password">Password</label>
+        </div>
+        <app-field-error-display [displayError]="isFieldValid('password')" errorMsg="* Please enter your password">
+        </app-field-error-display>
       </div>
       <div class="form-group">
         <div class="submitBtn">
           <button class="submit-btn e-btn" id="submit-btn" [disabled]="form.invalid" (click)= "Submit()">Submit</button>
         </div>
       </div>
-  </form>
-</ejs-dialog>
+    </form>
+  </ejs-dialog>
+</div>

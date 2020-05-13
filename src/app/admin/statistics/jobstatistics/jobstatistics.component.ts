@@ -86,7 +86,7 @@ export class JobstatisticsComponent implements OnInit {
   }
 
   calculateAVG(array: any[]){
-    var sum = 0;
+    let sum = 0;
     array.forEach(element => {
       sum += element
     })

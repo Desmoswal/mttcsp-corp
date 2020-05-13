@@ -3,14 +3,14 @@ import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
 
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClient]
+      imports: [RouterTestingModule, HttpClientTestingModule]
     });
     service = TestBed.inject(AuthService);
   });
