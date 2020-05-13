@@ -14,10 +14,10 @@ describe('angular-electron App', function () {
     browser = client as any;
   });
 
-  it('should display message saying App works !', async function () {
+  /*it('should display message saying App works !', async function () {
     const text = await browser.getText('app-home h1');
     expect(text).to.contain('App works !');
-  });
+  });*/
 
   it('creates initial windows', async function () {
     const count = await client.getWindowCount();
