@@ -30,7 +30,6 @@ export class ReviewjobsComponent implements OnInit {
       this.jobsForReview = jobList.filter(job =>
         job.employeeId == this.currentUser._id
       )
-      console.log(this.jobsForReview)
     });
   }
 

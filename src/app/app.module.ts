@@ -47,7 +47,7 @@ import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.c
 import { EmployeemanagementComponent } from './admin/employeemanagement/employeemanagement.component';
 import { AdminjobsComponent } from './admin/adminjobs/adminjobs.component';
 import { AdminstatisticsComponent } from './admin/adminstatistics/adminstatistics.component';
-import { FilemanagerComponent } from './filemanager/filemanager.component';
+import { FilemanagerComponent } from './shared/components/filemanager/filemanager.component';
 import { WorkspaceComponent } from './employee/workspace/workspace.component';
 import { LanguagemanagementComponent } from './admin/languagemanagement/languagemanagement.component';
 import { AvailablejobsComponent } from './employee/availablejobs/availablejobs.component';

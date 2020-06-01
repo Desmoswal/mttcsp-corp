@@ -27,10 +27,10 @@ export class EmployeedashboardComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
     this.userSub = this.authService.getCurrentUserListener().subscribe(user => {
       this.currentUser = user;
-      console.log(this.currentUser)
+      this.userLangs = user.languages;
+      this.getAvailableJobs();
+      this.getJobsForReview();
     })
-    this.getAvailableJobs();
-    this.getJobsForReview();
   }
 
 
@@ -41,7 +41,6 @@ export class EmployeedashboardComponent implements OnInit {
 
       this.jobs = filteredList.filter(job =>
         this.userLangs.includes(job.sourceLang))
-        console.log('this jobs: ' + this.jobs)
     });
   }
 

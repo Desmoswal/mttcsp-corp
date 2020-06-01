@@ -34,7 +34,6 @@ export class JobstatisticsComponent implements OnInit {
     this.jobService.getAvailableJobs().then(jobList => {
       this.employeeService.getAllEmployees().then(employeeList => {
         this.employeeLoad = jobList.length / employeeList.length
-        console.log(this.employeeLoad)
       })
     })
   }
@@ -66,7 +65,6 @@ export class JobstatisticsComponent implements OnInit {
         }
       })
       this.avgWorkingTime = this.calculateAVG(this.workingTimeList)
-      console.log(this.avgWorkingTime)
     })
   }
 
@@ -81,7 +79,6 @@ export class JobstatisticsComponent implements OnInit {
         }
       })
       this.avgWaitingTime = this.calculateAVG(this.waitingTimeList)
-      console.log(this.avgWaitingTime)
     })
   }
 

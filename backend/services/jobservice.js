@@ -8,11 +8,6 @@ const Path = require('path');
 const google = require('./googleservice')
 
 ipcMain.on('async-job-create', (event, arg) => {
-  /*console.log(arg)
-  console.log("------------------------")
-  console.log("event: ")
-  console.log(event)
-  console.log("------------------------")*/
   const job = new Job({
     firstName: arg.firstName,
     clientId: arg.clientId,
@@ -52,7 +47,6 @@ ipcMain.on('async-job-update', (event, arg) => {
 })
 
 ipcMain.on('async-job-remove', (event,arg) => {
-  console.log(arg)
   Job.remove({_id: arg.id}).then(result => {
     console.log(result);
     if(result.n > 0){
@@ -94,7 +88,6 @@ ipcMain.on('async-job-get-all', (event, arg) => {
 
 ipcMain.on('async-job-get-by-id', (event, arg) => {
   Job.find(arg._id).then(result => {
-    //console.log(result)
     event.reply('async-job-get-by-id-reply', result);
   }).catch(error => {
     event.reply('async-job-get-by-id-reply', error.message);

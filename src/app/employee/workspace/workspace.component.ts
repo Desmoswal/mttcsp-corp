@@ -35,12 +35,9 @@ export class WorkspaceComponent implements OnInit {
     });
   }
 
-
   activeJob: Job;
   currentUser: Employee;
 
-  /*public service = 'https://ej2services.syncfusion.com/production/web-services/api/pdfviewer';
-    public document = 'PDF_Succinctly.pdf';*/
   public service ='https://ej2services.syncfusion.com/production/web-services/api/pdfviewer';
   public document = ''
 

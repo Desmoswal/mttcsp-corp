@@ -30,7 +30,6 @@ export class LanguagemanagementComponent implements OnInit {
     this.lanugageService.getAllLanguages().then((languageList) => {
       this.languageList = languageList
     });
-    console.log(this.languageList)
   }
 
   onGridCreated(){
@@ -40,7 +39,6 @@ export class LanguagemanagementComponent implements OnInit {
 
   actionBegin(args: any): void {
     const gridInstance: any = (document.getElementById('Grid') as any).ej2_instances[0];
-    console.log(args)
     if(args.requestType === 'save'){
       const inputLanguage: Language = {
         _id: args.data._id,
@@ -49,7 +47,6 @@ export class LanguagemanagementComponent implements OnInit {
       }
       if(isNullOrUndefined(args.previousData._id))
       {
-        console.log(args.previousData.name)
         this.lanugageService.createLanguage(inputLanguage);
       }
       else{

@@ -22,9 +22,9 @@ export class AvailablejobsComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser();
     this.userSub = this.authService.getCurrentUserListener().subscribe(user => {
       this.currentUser = user;
-      console.log(this.currentUser)
+      this.userLangs = user.languages;
+      this.getAvailableJobs();
     })
-    this.getAvailableJobs();
   }
 
   cellSpacing = [10,10]
@@ -67,8 +67,8 @@ export class AvailablejobsComponent implements OnInit {
 
       this.jobs = filteredList.filter(job =>
         this.userLangs.includes(job.sourceLang))
-        console.log('this jobs: ' + this.jobs)
     });
+    console.log("user langs: " + this.userLangs)
   }
 
   getEmployeeHistory(){

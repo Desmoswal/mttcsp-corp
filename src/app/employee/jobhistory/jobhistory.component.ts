@@ -35,7 +35,6 @@ export class JobhistoryComponent implements OnInit {
 
   getJobHistory(){
     if(!isNullOrUndefined(this.currentUser)){
-      console.log(this.authService.getCurrentUser())
       this.jobService.getEmployeeJobHistory(this.currentUser._id).then(jobList => {
         this.jobHistory = jobList;
       })

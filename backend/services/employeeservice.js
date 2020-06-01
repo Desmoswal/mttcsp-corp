@@ -1,11 +1,6 @@
-//const bcrypt = require('bcrypt')
-//const jwt = require("jsonwebtoken");
 const Employee = require("../models/employee")
-//const passport = require("passport")
-//const Language = require("../models/language")
 
 const { ipcMain } = require('electron')
-
 
 ipcMain.on('async-employee-create', (event, arg) => {
   const employee = new Employee({
@@ -32,8 +27,6 @@ ipcMain.on('async-employee-create', (event, arg) => {
 })
 
 ipcMain.on('async-employee-update', (event, arg) => {
-  console.log(arg)
-
   Employee.update({_id: arg._id}, arg).then(result => {
       console.log(result)
       if(result.n > 0){
@@ -48,7 +41,6 @@ ipcMain.on('async-employee-update', (event, arg) => {
 })
 
 ipcMain.on('async-employee-remove', (event,arg) => {
-  console.log(arg)
   Employee.remove({_id: arg.id}).then(result => {
     console.log(result);
     if(result.n > 0){

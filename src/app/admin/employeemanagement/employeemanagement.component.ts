@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RuleModel , RuleChangeEventArgs} from '@syncfusion/ej2-querybuilder';
 import { isNullOrUndefined } from '@syncfusion/ej2-base';
-//import { employeeData } from './data-source';
 import { DataManager, Query, ReturnOption, Predicate } from '@syncfusion/ej2-data';
 import { QueryBuilderComponent } from '@syncfusion/ej2-angular-querybuilder';
 import { GridComponent, PageService, SelectionService, ToolbarService } from '@syncfusion/ej2-angular-grids';
 import { EmployeeService } from '../../employee.service';
 import { Employee } from '../../employee.model';
 import { Language } from '../../language.model';
-const { ipcRenderer } = require('electron')
 
 @Component({
   selector: 'app-employeemanagement',

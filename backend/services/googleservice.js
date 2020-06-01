@@ -7,23 +7,10 @@ const gc = new Storage({
 })
 let bucketName = process.env.GOOGLE_CLOUD_BUCKET_NAME
 
-console.log(bucketName)
-
-/*gc.getBuckets().then(x => {
-  console.log(x)
-  listFiles()
-})
-*/
-
 
 exports.listFiles = async function (folder) {
   // Lists files in the bucket
   var [files] = await gc.bucket(bucketName).getFiles();
-
-  console.log('Files:');
-  /*files.forEach(file => {
-      fileList.push(file)
-  });*/
 
   files = files.filter(file => file.name.startsWith(folder))
   files.forEach(file => {

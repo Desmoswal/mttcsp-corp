@@ -39,7 +39,6 @@ export class AdminjobsComponent implements OnInit {
     this.jobService.getAllJobs().then(jobList => {
       this.jobList = jobList
     });
-    //this.grid.refresh()
   }
 
   actionBegin(args: any): void {
