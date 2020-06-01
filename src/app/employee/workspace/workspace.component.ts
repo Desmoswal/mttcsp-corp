@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
 import { DatePipe } from '@angular/common';
 import { Employee } from '../../employee.model';
+import { DocumentEditor, FormatType, Selection, Editor, SfdtExport, WordExport} from '@syncfusion/ej2-documenteditor';
 @Component({
   selector: 'app-workspace',
   templateUrl: './workspace.component.html',
@@ -17,14 +18,24 @@ export class WorkspaceComponent implements OnInit {
   constructor(public jobService: JobService, public router: Router, public authService: AuthService) { }
 
   isReview: boolean;
-
   ngOnInit(): void {
     this.activeJob = this.jobService.getWorkspaceJob();
     this.isReview = this.jobService.getIsReview();
     this.createDirectory();
     this.getFiles();
     this.currentUser = this.authService.getCurrentUser()
+    DocumentEditor.Inject(SfdtExport, WordExport, Selection, Editor);
+
+    let documenteditor: DocumentEditor = new DocumentEditor({ enableWordExport: true, enableSelection: true, enableEditor: true, isReadOnly: false });
+
+    documenteditor.appendTo('#DocumentEditor');
+
+    document.getElementById('export').addEventListener('click', () => {
+      documenteditor.save('sample', 'Docx');
+    });
   }
+
+
   activeJob: Job;
   currentUser: Employee;
 

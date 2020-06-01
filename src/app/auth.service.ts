@@ -22,8 +22,8 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  currentUser: Employee;
-
+  currentUser:Employee
+  currentUserListener = new Subject<Employee>()
 
 
   getToken() {
@@ -40,6 +40,10 @@ export class AuthService {
 
   getUserId(){
     return this.userId;
+  }
+
+  getCurrentUserListener(){
+    return this.currentUserListener.asObservable();
   }
 
   getCurrentUser(){
@@ -88,7 +92,7 @@ export class AuthService {
     })
   }
 
-  getUserProfile(): Employee{
+  getUserProfile(){
     this.currentUser = new Employee;
     this.http.get<{user: Employee}>("http://localhost:3000/profile").subscribe(response => {
       console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA')
@@ -104,8 +108,10 @@ export class AuthService {
       this.currentUser.profilePic = response.user.profilePic;
       this.currentUser.languages = response.user.languages;
       this.currentUser.role = response.user.role
+      this.currentUserListener.next(response.user)
     });
     console.log(this.currentUser)
+    console.log('AAAAAAAAAAAAAAAAAAAAAA')
     return this.currentUser;
   }
 

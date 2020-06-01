@@ -18,11 +18,8 @@ const employeeSchema = mongoose.Schema({
 
 employeeSchema.pre("save", async function(next) {
   try {
-    if(!this.googleId)
-    {
       const hashedPassword = await bcrypt.hash(this.password, 10);
       this.password = hashedPassword;
-    }
     next();
   } catch (error) {
     next(error);
@@ -42,3 +39,4 @@ employeeSchema.methods.isPasswordValid = async function(inputPassword) {
 employeeSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("Employee", employeeSchema);
+

@@ -1,0 +1,33 @@
+{
+  "PAGES": {
+      "EMPLOYEEDASH": {
+        "TITLE": "Munka info",
+        "AVAILABLE": "Elérhető Munkák",
+        "ACTIVE": "Aktív munkák",
+        "REVIEW": "Felülvizsgálat szükséges",
+        "REVIEW2": "Felülvizsgálat szükséges"
+      },
+      "REVIEWJOBS":{
+        "NOJOBS":"Nincs elérhető munka",
+        "HEADERFROM":"Fordítás erről",
+        "HEADERTO":"erre",
+        "CREATIONDATE":"Létrehozási idő:",
+        "ORIGINALLANG":"Eredeti nyelv:",
+        "REQLANG":"Kért nyelv:",
+        "FOLDER":"Mappa:",
+        "STATUS": "Státusz:",
+        "ACCEPT": "Elfogadás"
+      },
+      "AVAILABLEJOBS": {
+        "NOJOBS": "Nincs elérhető munka",
+        "HEADERFROM": "Fordítás erről",
+        "HEADERTO": "erre",
+        "CREATIONDATE": "Létrehozási idő:",
+        "ORIGINALLANG": "Eredeti nyelv:",
+        "REQLANG": "Kért nyelv:",
+        "FOLDER": "Mappa:",
+        "STATUS": "Státusz:",
+        "ACCEPT": "Elfogadás"
+      }
+  }
+}

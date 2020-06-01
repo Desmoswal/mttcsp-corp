@@ -1,19 +1,19 @@
-<p *ngIf="jobsForReview.length <= 0">No jobs to review.</p>
+<p *ngIf="jobsForReview.length <= 0">{{ 'PAGES.REVIEWJOBS.NOJOBS' | translate}}</p>
 <ejs-accordion>
   <e-accordionitems>
     <e-accordionitem expanded='false' *ngFor="let job of jobsForReview">
       <ng-template #header>
-        <div>Translation from {{job.sourceLang}} to {{job.reqLang}}</div>
+        <div>{{ 'PAGES.REVIEWJOBS.HEADERFROM' | translate}} {{job.sourceLang}} {{ 'PAGES.REVIEWJOBS.HEADERTO' | translate}} {{job.reqLang}}</div>
       </ng-template>
       <ng-template #content>
         <div>
           <p>ID: {{job._id}}</p>
-          <p>Creation date: {{job.creationDate}}</p>
-          <p>Original language: {{job.sourceLang}}</p>
-          <p>Requested language: {{job.reqLang}}</p>
-          <p>Folder: {{job.folder}}</p>
-          <p>Status: {{job.status}}</p>
-          <button ejs-button cssClass="e-primary" (click)="acceptJob(job)">Review</button>
+          <p>{{ 'PAGES.REVIEWJOBS.CREATIONDATE' | translate}} {{job.creationDate}}</p>
+          <p>{{ 'PAGES.REVIEWJOBS.ORIGINALLANG' | translate}} {{job.sourceLang}}</p>
+          <p>{{ 'PAGES.REVIEWJOBS.REQLANG' | translate}} {{job.reqLang}}</p>
+          <p>{{ 'PAGES.REVIEWJOBS.FOLDER' | translate}} {{job.folder}}</p>
+          <p>{{ 'PAGES.REVIEWJOBS.STATUS' | translate}} {{job.status}}</p>
+          <button ejs-button cssClass="e-primary" (click)="acceptJob(job)">{{ 'PAGES.REVIEWJOBS.ACCEPT' | translate}}</button>
         </div>
       </ng-template>
       </e-accordionitem>

@@ -1,9 +1,33 @@
 {
   "PAGES": {
-      "HOME": {
-          "TITLE": "App works !",
-          "TEXT": "Does it?",
-          "T2": "It really does."
+      "EMPLOYEEDASH": {
+        "TITLE": "Job info",
+        "AVAILABLE": "Available Jobs",
+        "ACTIVE": "Active Jobs",
+        "REVIEW": "Needs Review",
+        "REVIEW2": "Review Needed"
+      },
+      "REVIEWJOBS":{
+        "NOJOBS":"No jobs available.",
+        "HEADERFROM":"Translation from",
+        "HEADERTO":"to",
+        "CREATIONDATE":"Creation date:",
+        "ORIGINALLANG":"Original language:",
+        "REQLANG":"Requested language:",
+        "FOLDER":"Folder:",
+        "STATUS": "Status:",
+        "ACCEPT": "Accept Job"
+      },
+      "AVAILABLEJOBS": {
+        "NOJOBS": "No jobs available",
+        "HEADERFROM": "Translation from",
+        "HEADERTO": "to",
+        "CREATIONDATE": "Creation date:",
+        "ORIGINALLANG": "Original language:",
+        "REQLANG": "Requested language:",
+        "FOLDER": "Folder:",
+        "STATUS": "Status:",
+        "ACCEPT": "Accept Job"
       }
   }
 }

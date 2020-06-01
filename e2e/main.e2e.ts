@@ -9,10 +9,10 @@ describe('angular-electron App', function () {
   let browser: any;
   let client: SpectronClient;
 
- /* beforeEach(function () {
+ beforeEach(function () {
     client = this.app.client;
     browser = client as any;
-  });*/
+  });
 
   /*it('should display message saying App works !', async function () {
     const text = await browser.getText('app-home h1');
@@ -20,8 +20,6 @@ describe('angular-electron App', function () {
   });*/
 
   it('creates initial windows', async function () {
-    client = this.app.client;
-    browser = client as any;
     const count = await client.getWindowCount();
     expect(count).to.equal(1);
   });

@@ -5,6 +5,7 @@ import { AuthService } from '../../auth.service';
 import { Employee } from '../../employee.model';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-availablejobs',
@@ -15,9 +16,14 @@ export class AvailablejobsComponent implements OnInit {
 
   constructor(public jobService: JobService, public authService: AuthService, private router: Router) { }
 
+  userSub: Subscription
 
   ngOnInit(): void {
-    this.getCurrentEmployee();
+    this.currentUser = this.authService.getCurrentUser();
+    this.userSub = this.authService.getCurrentUserListener().subscribe(user => {
+      this.currentUser = user;
+      console.log(this.currentUser)
+    })
     this.getAvailableJobs();
   }
 
@@ -69,12 +75,6 @@ export class AvailablejobsComponent implements OnInit {
     this.jobService.getEmployeeJobHistory(this.currentUser._id).then(jobList => {
       this.jobs = jobList;
     });
-  }
-
-  getCurrentEmployee(){
-    this.currentUser = this.authService.getCurrentUser();
-    //this.userLangs = this.currentUser.languages;
-    console.log(this.userLangs)
   }
 
   getFormattedDate(){

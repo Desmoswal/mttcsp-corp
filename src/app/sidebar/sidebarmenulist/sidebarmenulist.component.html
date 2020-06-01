@@ -2,7 +2,7 @@
   <ejs-listview id='lists' [dataSource]='dataSource' [fields]='fields' headerTitle='Menu' [showHeader]='true' (select)="selected($event)">
       <ng-template #template let-dataSource="">
           <div class="listWrapper" style="width: inherit;height: inherit;">
-              <span class="{{dataSource.icons}} list_svg">&nbsp;</span>
+              <span class="{{dataSource.icons}} list_svg e-icons">&nbsp;</span>
               <span class="list_text">{{dataSource.text}} </span>
           </div>
       </ng-template>

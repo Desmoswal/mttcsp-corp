@@ -5,6 +5,7 @@ import { Employee } from '../../employee.model';
 import { AuthService } from '../../auth.service';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { isNullOrUndefined } from 'util';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-jobhistory',
@@ -18,31 +19,36 @@ export class JobhistoryComponent implements OnInit {
   @ViewChild('grid') grid: GridComponent;
 
   pageSettings: Record<string, any>;
+  jobHistory: Job[] = []
+  userSub: Subscription;
+  currentUser: Employee
 
   ngOnInit(): void {
-    this.getCurrentEmployee();
-    this.getJobHistory();
+    this.currentUser = this.authService.getCurrentUser();
+    this.userSub = this.authService.getCurrentUserListener().subscribe(user => {
+      this.currentUser = user;
+      console.log(this.currentUser)
+    })
+
     this.pageSettings = { pageSizes: true, pageCount: 15 };
   }
 
-  jobHistory: Job[] = []
-  employee: Employee
-
   getJobHistory(){
-    if(!isNullOrUndefined(this.employee)){
-      this.jobService.getEmployeeJobHistory(this.employee._id).then(jobList => {
+    if(!isNullOrUndefined(this.currentUser)){
+      console.log(this.authService.getCurrentUser())
+      this.jobService.getEmployeeJobHistory(this.currentUser._id).then(jobList => {
         this.jobHistory = jobList;
       })
     }
-  }
-
-  getCurrentEmployee(){
-    this.employee = this.authService.getCurrentUser();
   }
 
   onGridCreated(){
     this.getJobHistory()
     this.grid.dataSource = this.jobHistory;
     this.grid.refresh();
+  }
+
+  ngOnDestroy(){
+    this.userSub.unsubscribe()
   }
 }

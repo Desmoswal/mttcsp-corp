@@ -1,0 +1,24 @@
+.e-search:before{
+  content:'\e993';
+}
+.e-dashboard:before{
+  content:'\e30d';
+}
+.e-workspace:before{
+  content:'\e7a3';
+}
+.e-statistics:before{
+  content:'\e194';
+}
+.e-management:before{
+  content:'\e7a3';
+}
+.e-history:before{
+  content:'\e313';
+}
+.e-chat:before{
+  content:'\e680';
+}
+.e-logout:before{
+  content:'\e815';
+}

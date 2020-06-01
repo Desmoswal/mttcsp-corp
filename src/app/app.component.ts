@@ -20,6 +20,10 @@ export class AppComponent {
     private authService: AuthService
   ) {
     translate.setDefaultLang('en');
+    translate.addLangs(['hu'])
+    translate.use(translate.getBrowserLang());
+    //translate.use('xx') //keep for showcase
+    console.log(translate.getLangs())
     console.log('AppConfig', AppConfig);
 
     if (electronService.isElectron) {
