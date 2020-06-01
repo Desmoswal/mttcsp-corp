@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core'
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
 import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-login',

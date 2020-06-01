@@ -6,14 +6,14 @@ import { AdminjobsComponent } from './admin/adminjobs/adminjobs.component';
 import { AdminstatisticsComponent } from './admin/adminstatistics/adminstatistics.component';
 import { EmployeemanagementComponent } from './admin/employeemanagement/employeemanagement.component';
 import { AuthGuard } from './auth.guard';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { ChatComponent } from './chat/chat.component';
+import { LogoutComponent } from './shared/components/logout/logout.component';
+import { ChatComponent } from './shared/components/chat/chat.component';
 import { AvailablejobsComponent } from './employee/availablejobs/availablejobs.component';
 import { JobhistoryComponent } from './employee/jobhistory/jobhistory.component';
 import { EmployeedashboardComponent } from './employee/employeedashboard/employeedashboard.component';
 import { WorkspaceComponent } from './employee/workspace/workspace.component';
 import { ManagementComponent } from './admin/management/management.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 const routes: Routes = [
   //{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

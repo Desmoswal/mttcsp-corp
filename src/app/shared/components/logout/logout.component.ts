@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { EmitType } from '@syncfusion/ej2-base';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-logout',
