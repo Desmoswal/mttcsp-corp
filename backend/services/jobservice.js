@@ -155,8 +155,6 @@ ipcMain.on('async-job-get-available', (event, arg) => {
 
 ipcMain.on('async-job-get-employee-history', (event, arg) => {
   const jobList = [];
-  console.log('ITTT')
-  console.log(arg)
   Job.find({status: "DONE", employeeId: arg.employeeId}).then(result => {
     result.forEach(element => {
       const job = {

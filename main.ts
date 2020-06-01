@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, ipcMain, Tray, Menu } from 'electron';
+import { app, BrowserWindow, screen, Tray, Menu } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 const serviceConnector = require('./backend/services/service-connector.js')

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components';
-import { HomeComponent } from './home/home.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
 import { AdminjobsComponent } from './admin/adminjobs/adminjobs.component';
 import { AdminstatisticsComponent } from './admin/adminstatistics/adminstatistics.component';
@@ -17,7 +16,7 @@ import { WorkspaceComponent } from './employee/workspace/workspace.component';
 import { ManagementComponent } from './admin/management/management.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  //{ path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'admindashboard', component: AdmindashboardComponent, canActivate: [AuthGuard]},
   { path: 'adminmanagement', component: ManagementComponent, canActivate: [AuthGuard]},
   { path: 'adminjobs', component: AdminjobsComponent, canActivate: [AuthGuard]},

@@ -50,7 +50,6 @@ export class EmployeemanagementComponent implements OnInit {
     this.employeeService.getAllEmployees().then(employeeList => {
       this.employeeList = employeeList
     });
-    //this.grid.refresh()
   }
 
 

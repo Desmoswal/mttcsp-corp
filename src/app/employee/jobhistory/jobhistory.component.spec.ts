@@ -48,7 +48,7 @@ describe('JobhistoryComponent', () => {
   });
 
   it('should create', () => {
-    component.employee = serviceStub.getCurrentUser();
+    component.currentUser = serviceStub.getCurrentUser();
     expect(component).toBeTruthy();
   });
 });

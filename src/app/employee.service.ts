@@ -36,7 +36,6 @@ export class EmployeeService {
 
   getAllEmployees() {
     const promise = new Promise<Employee[]>((resolve, reject)=> {
-
       ipcRenderer.send('async-employee-get-all');
       ipcRenderer.once('async-employee-get-all-reply',(event, arg) =>{
         this.employeeList = [];

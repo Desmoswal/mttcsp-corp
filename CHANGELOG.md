@@ -2,6 +2,7 @@
 
 * Added and set up backend, progress on different components ([2400d4a](https://github.com/Desmoswal/mttcsp-corp/commit/2400d4a))
 * Added syncfusion, generated some components and tested syncfusion's capabilities. ([7250f9b](https://github.com/Desmoswal/mttcsp-corp/commit/7250f9b))
+* Added translation to some components, quick fixes and started cleanup ([d41912c](https://github.com/Desmoswal/mttcsp-corp/commit/d41912c))
 * Changelog updated ([6b593fd](https://github.com/Desmoswal/mttcsp-corp/commit/6b593fd))
 * Finalized/fixed some components, deleted unnecessary data files, started fixing errors, tests still  ([0da662e](https://github.com/Desmoswal/mttcsp-corp/commit/0da662e))
 * Finished / Cleaned up components, small fixes. Some more optimizations needed ([adc92c2](https://github.com/Desmoswal/mttcsp-corp/commit/adc92c2))

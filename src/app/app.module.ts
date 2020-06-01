@@ -14,7 +14,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeModule } from './home/home.module';
 
 //Syncfusion
 import {MenuModule, ToolbarModule, SidebarModule, TreeViewModule,AccordionModule } from '@syncfusion/ej2-angular-navigations'
@@ -80,7 +79,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HttpClientModule,
     CoreModule,
     SharedModule,
-    HomeModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
