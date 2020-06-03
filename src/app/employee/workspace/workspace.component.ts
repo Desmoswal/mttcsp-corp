@@ -30,9 +30,9 @@ export class WorkspaceComponent implements OnInit {
 
     documenteditor.appendTo('#DocumentEditor');
 
-    document.getElementById('export').addEventListener('click', () => {
+    /*document.getElementById('export').addEventListener('click', () => {
       documenteditor.save('sample', 'Docx');
-    });
+    });*/
   }
 
   activeJob: Job;
@@ -92,6 +92,8 @@ export class WorkspaceComponent implements OnInit {
         this.jobService.updateJob(modifiedJob);
       }
       this.jobService.deleteJobDirectory(this.activeJob._id)
+      this.activeJob = null;
+      this.jobService.setWorkspaceJob(null);
       this.router.navigate(['/employeedashboard']);
     }).catch(err => {
       console.log(err.message)

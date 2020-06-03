@@ -26,6 +26,20 @@ employeeSchema.pre("save", async function(next) {
   }
 });
 
+employeeSchema.pre("update", async function(next) {
+  if(String(this._update.password).startsWith("$2b$")) {
+    next();
+  }
+  else {
+    try {
+      const hashedPassword = await bcrypt.hash(this._update.password, 10);
+      this._update.password = hashedPassword;
+      next();
+    } catch (error){
+      next(error);
+    }
+  }
+})
 
 employeeSchema.methods.isPasswordValid = async function(inputPassword) {
   try {

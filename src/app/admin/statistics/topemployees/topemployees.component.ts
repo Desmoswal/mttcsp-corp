@@ -45,7 +45,7 @@ export class TopemployeesComponent implements OnInit {
     this.refresh
 
     this.legendSettings = {
-        visible: false
+        visible: true
     };
     this.tooltip = {
       enable: true, header: "Employee"

@@ -5,6 +5,7 @@ import { ReviewjobsComponent } from './reviewjobs.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Employee } from '../../employee.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('ReviewjobsComponent', () => {
   let component: ReviewjobsComponent;
@@ -14,7 +15,7 @@ describe('ReviewjobsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, TranslateModule.forRoot()],
       declarations: [ ReviewjobsComponent ]
     })
     .compileComponents();

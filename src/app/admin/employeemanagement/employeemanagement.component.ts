@@ -67,8 +67,8 @@ export class EmployeemanagementComponent implements OnInit {
           city: newData.city,
           country: newData.country,
           zip: newData.zip,
-          languages: ['hu'],
-          profilePic: "",
+          languages: newData.languages,
+          profilePic: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
           role: newData.role
         }
         console.log("new employee", newEmployee)
@@ -86,8 +86,8 @@ export class EmployeemanagementComponent implements OnInit {
           city: newData.city,
           country: newData.country,
           zip: newData.zip,
-          languages: ['hu'],
-          profilePic: "",
+          languages: newData.languages,
+          profilePic: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
           role: newData.role
         }
         console.log("modified employee", modifiedEmployee)
@@ -105,9 +105,9 @@ export class EmployeemanagementComponent implements OnInit {
     const fltrDataSource: Employee[] = [];
     let dataManagerQuery: Query;
     if (isNullOrUndefined(predicate)) {
-        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']);
+        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'password', 'address', 'city', 'country', 'zip', 'role', 'languages']);
     } else {
-        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'country', 'role', 'languages']).where(predicate);
+        dataManagerQuery = new Query().select(['_id', 'profilePic', 'firstName', 'lastName', 'email', 'password', 'address', 'city', 'country', 'zip', 'role', 'languages']).where(predicate);
     }
     new DataManager(this.employeeList).executeQuery(dataManagerQuery).then((e: ReturnOption) => {
             (e.result as Record<string,any>).forEach((data: Employee) => {

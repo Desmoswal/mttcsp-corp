@@ -56,8 +56,7 @@ export class JobstatisticsComponent implements OnInit {
   calculateAvgWorkingTime(){
     this.jobService.getAllJobs().then(jobList => {
       jobList.forEach(element => {
-        if(element.completionDate != '' || element.startDate == null){
-          //console.log(element.completionDate)
+        if(element.completionDate != '' && element.startDate != null){
           const comp = this.getTimeFromString(element.completionDate)
           const start = this.getTimeFromString(element.startDate)
           const diff = ((comp-start) / (60*60*24*1000))
@@ -71,7 +70,7 @@ export class JobstatisticsComponent implements OnInit {
   calculateAvgWaitingTime(){
     this.jobService.getAllJobs().then(jobList => {
       jobList.forEach(element => {
-        if(element.startDate != '' || element.startDate == null ){
+        if(element.startDate != '' && element.startDate != null && element.completionDate){
           const created = this.getTimeFromString(element.creationDate)
           const start = this.getTimeFromString(element.completionDate)
           const diff = ((start-created) / (60*60*24*1000))

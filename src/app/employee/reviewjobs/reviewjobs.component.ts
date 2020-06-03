@@ -28,7 +28,7 @@ export class ReviewjobsComponent implements OnInit {
     this.jobService.getJobsForReview().then(jobList => {
       console.log(jobList)
       this.jobsForReview = jobList.filter(job =>
-        job.employeeId == this.currentUser._id
+        job.employeeId != this.currentUser._id
       )
     });
   }

@@ -80,6 +80,7 @@ ipcMain.on('async-employee-get-all', (event, arg) => {
 })
 
 ipcMain.on('async-employee-get-by-id', (event, arg) => {
+  console.log("ID" + arg.id)
   Employee.find({_id: arg.id}).then(result => {
     const employeeList = []
     result.forEach(element => {
@@ -99,6 +100,8 @@ ipcMain.on('async-employee-get-by-id', (event, arg) => {
       }
       employeeList.push(employee)
     })
+    console.log('employeelist')
+    console.log(employeeList)
     event.reply('async-employee-get-by-id-reply', employeeList);
   }).catch(error => {
     event.reply('async-employee-get-by-id-reply', error.message);

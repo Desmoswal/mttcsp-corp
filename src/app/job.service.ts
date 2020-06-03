@@ -129,7 +129,6 @@ export class JobService {
         resolve(this.jobList)
       })
     })
-    console.log('itt: ' + this.jobList)
     return promise;
   }
 

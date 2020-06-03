@@ -4,6 +4,7 @@ import { EmployeedashboardComponent } from './employeedashboard.component';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('EmployeedashboardComponent', () => {
   let component: EmployeedashboardComponent;
@@ -11,7 +12,7 @@ describe('EmployeedashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, TranslateModule.forRoot()],
       declarations: [ EmployeedashboardComponent ]
     })
     .compileComponents();

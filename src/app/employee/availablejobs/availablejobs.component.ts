@@ -63,10 +63,10 @@ export class AvailablejobsComponent implements OnInit {
   getAvailableJobs(){
     this.jobService.getAvailableJobs().then(jobList => {
       const filteredList = jobList.filter(job =>
-        this.userLangs.includes(job.reqLang));
+        this.userLangs.includes(job.reqLang.toLowerCase()));
 
       this.jobs = filteredList.filter(job =>
-        this.userLangs.includes(job.sourceLang))
+        this.userLangs.includes(job.sourceLang.toLowerCase()))
     });
     console.log("user langs: " + this.userLangs)
   }

@@ -54,6 +54,7 @@ export class EmployeeService {
       id: employeeId
     }
     const promise = new Promise<Employee[]>((resolve, reject)=> {
+      console.log('GETTING EMPLOYEE BY ID ' + employeeData.id)
       ipcRenderer.send('async-employee-get-by-id', employeeData)
       ipcRenderer.once('async-employee-get-by-id-reply', (event,arg)=> {
         this.employeeList = [];

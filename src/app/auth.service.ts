@@ -61,14 +61,14 @@ export class AuthService {
           const decodedtoken = jwtDecode(this.token);
           const now = new Date();
           const expiration = new Date(decodedtoken.exp)
-          console.log(expiration)
+
           const expiresInDuration = expiration.getTime() - now.getTime();
-          console.log(expiresInDuration)
+
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
           this.userId = decodedtoken.sub;
           this.authStatusListener.next(true);
-          const expirationDate = new Date(decodedtoken.exp);// expiresInDuration * 1000);
+          const expirationDate = new Date(decodedtoken.exp);
           this.saveAuthData(this.token, expirationDate, this.userId);
           this.router.navigate(["/employeedashboard"]);
           this.getUserProfile();
@@ -95,8 +95,6 @@ export class AuthService {
   getUserProfile(){
     this.currentUser = new Employee;
     this.http.get<{user: Employee}>("http://localhost:3000/profile").subscribe(response => {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA')
-      console.log(response)
       this.currentUser._id = response.user._id;
       this.currentUser.firstName = response.user.firstName;
       this.currentUser.lastName = response.user.lastName;
@@ -110,8 +108,6 @@ export class AuthService {
       this.currentUser.role = response.user.role
       this.currentUserListener.next(response.user)
     });
-    console.log(this.currentUser)
-    console.log('AAAAAAAAAAAAAAAAAAAAAA')
     return this.currentUser;
   }
 
