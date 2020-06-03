@@ -2,6 +2,7 @@ import {expect} from 'chai';
 import {SpectronClient} from 'spectron';
 
 import commonSetup from './common-setup';
+import { app } from 'electron';
 
 describe('angular-electron App', function () {
   commonSetup.apply(this);
@@ -9,9 +10,10 @@ describe('angular-electron App', function () {
   let browser: any;
   let client: SpectronClient;
 
- beforeEach(function () {
+ beforeEach(function (done) {
     client = this.app.client;
     browser = client as any;
+    done();
   });
 
   /*it('should display message saying App works !', async function () {
@@ -20,6 +22,7 @@ describe('angular-electron App', function () {
   });*/
 
   it('creates initial windows', async function () {
+    await client.waitUntilWindowLoaded();
     const count = await client.getWindowCount();
     expect(count).to.equal(1);
   });

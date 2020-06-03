@@ -26,7 +26,7 @@ export class WorkspaceComponent implements OnInit {
     this.currentUser = this.authService.getCurrentUser()
     DocumentEditor.Inject(SfdtExport, WordExport, Selection, Editor);
 
-    let documenteditor: DocumentEditor = new DocumentEditor({ enableWordExport: true, enableSelection: true, enableEditor: true, isReadOnly: false });
+    const documenteditor: DocumentEditor = new DocumentEditor({ enableWordExport: true, enableSelection: true, enableEditor: true, isReadOnly: false });
 
     documenteditor.appendTo('#DocumentEditor');
 

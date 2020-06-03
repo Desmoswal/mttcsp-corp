@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  currentUser:Employee
+  currentUser: Employee
   currentUserListener = new Subject<Employee>()
 
 

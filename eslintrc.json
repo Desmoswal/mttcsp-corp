@@ -19,6 +19,8 @@
     "rules": {
       "@typescript-eslint/no-empty-function": 0,
       "@typescript-eslint/no-var-requires": 0,
-      "@typescript-eslint/no-explicit-any": 0
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/unbound-method": 1,
+      "@typescript-eslint/ban-types": 1
     }
 }
